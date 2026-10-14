@@ -944,7 +944,7 @@
     "@types/react-dom": "^19.2.3",
     "@types/vscode": "^1.85.0",
     "@vscode/test-cli": "^0.0.12",
-    "@vscode/test-electron": "^2.5.2",
+    "@vscode/test-electron": "^3.1.0",
     "@vscode/vsce": "^3.7.1",
     "esbuild": "^0.27.2",
     "esbuild-plugin-copy": "^2.1.1",
