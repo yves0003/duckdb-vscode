@@ -63,8 +63,8 @@ This triggers the CI/CD pipeline which will:
 
 ### 5. Monitor the Release
 
-- **GitHub Actions**: https://github.com/ChuckJonas/duckdb-vscode/actions
-- **Marketplace**: https://marketplace.visualstudio.com/items?itemName=chuckjonas.duckdb
+- **GitHub Actions**: https://github.com/yves0003/duckdb-vscode/actions
+- **Marketplace**: https://marketplace.visualstudio.com/items?itemName=yves0003.f4data-parq
 
 The publish typically takes 2-5 minutes after the workflow completes.
 
@@ -88,7 +88,7 @@ The Personal Access Token (PAT) expires periodically. If publishing fails with a
 
 ### 2. Update the GitHub Secret
 
-1. Go to https://github.com/ChuckJonas/duckdb-vscode/settings/secrets/actions
+1. Go to https://github.com/yves0003/duckdb-vscode/settings/secrets/actions
 2. Click on `VSCE_PAT`
 3. Click **Update**
 4. Paste the new token

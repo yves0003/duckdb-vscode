@@ -372,7 +372,10 @@ export class DuckDBService {
       tempDir = fs.mkdtempSync(path.join(root, `pid-${process.pid}-`));
       this.ownedTempDir = tempDir;
     }
-    await this.connection.run(`SET temp_directory = '${tempDir}'`);
+    // Escape quotes: Windows temp paths can contain apostrophes (e.g. C:\Users\O'Brien\...)
+    await this.connection.run(
+      `SET temp_directory = '${tempDir.replace(/'/g, "''")}'`
+    );
 
     // Allow DuckDB to spill to disk when memory_limit is exceeded
     const maxTempSize = options?.maxTempDirectorySize || "15GB";
@@ -2079,7 +2082,16 @@ export class DuckDBService {
       }
       this.connection = null;
     }
-    this.instance = null;
+    if (this.instance) {
+      // Release native file handles now rather than at GC time; on Windows
+      // open handles block deleting attached DB files and the temp dir.
+      try {
+        this.instance.closeSync();
+      } catch (e) {
+        console.warn("🦆 instance close failed:", e);
+      }
+      this.instance = null;
+    }
 
     if (this.ownedTempDir) {
       try {

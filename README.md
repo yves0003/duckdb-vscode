@@ -1,15 +1,15 @@
 # 🦆 DuckDB for VS Code
 
-[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/chuckjonas.duckdb?label=VS%20Code%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=chuckjonas.duckdb)
-[![Open VSX](https://img.shields.io/open-vsx/v/chuckjonas/duckdb?label=Open%20VSX)](https://open-vsx.org/extension/chuckjonas/duckdb)
+[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/yves0003.f4data-parq?label=VS%20Code%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=yves0003.f4data-parq)
+[![Open VSX](https://img.shields.io/open-vsx/v/yves0003/f4data-parq?label=Open%20VSX)](https://open-vsx.org/extension/yves0003/f4data-parq)
 
 > An unofficial DuckDB extension for Visual Studio Code. Query CSV, Parquet, JSON, and Excel files directly. Connect to `.duckdb`, S3, Postgres, Google Sheets and more.
 
-![Query Parquet files directly](https://raw.githubusercontent.com/ChuckJonas/duckdb-vscode/main/resources/query-parquet.gif)
+![Query Parquet files directly](https://raw.githubusercontent.com/yves0003/duckdb-vscode/main/resources/query-parquet.gif)
 
-![Live Preview](https://raw.githubusercontent.com/ChuckJonas/duckdb-vscode/main/resources/live-preview-demo.gif)
+![Live Preview](https://raw.githubusercontent.com/yves0003/duckdb-vscode/main/resources/live-preview-demo.gif)
 
-![Database Explorer](https://raw.githubusercontent.com/ChuckJonas/duckdb-vscode/main/resources/database-explorer.gif)
+![Database Explorer](https://raw.githubusercontent.com/yves0003/duckdb-vscode/main/resources/database-explorer.gif)
 
 
 ## Overview

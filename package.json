@@ -1,13 +1,13 @@
 {
-  "name": "duckdb",
-  "displayName": "DuckDB",
+  "name": "f4data-parq",
+  "displayName": "f4data_parq",
   "description": "A DuckDB client for VS Code — query CSV, Parquet, JSON, and Excel files directly",
   "version": "0.0.27",
-  "publisher": "chuckjonas",
+  "publisher": "yves0003",
   "icon": "resources/icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ChuckJonas/duckdb-vscode.git"
+    "url": "https://github.com/yves0003/duckdb-vscode.git"
   },
   "license": "MIT",
   "engines": {
@@ -934,6 +934,7 @@
     "lint": "eslint src",
     "test": "vscode-test",
     "test:unit": "node --import tsx --test ./src/test/*.test.ts",
+    "verify:native": "node scripts/verify-native-binding.mjs",
     "deploy": "vsce publish"
   },
   "devDependencies": {

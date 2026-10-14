@@ -29,13 +29,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Fails fast if npm did not install the native binding for this OS/arch
+      # or if it cannot load and run a query (e.g. missing duckdb.dll on Windows)
+      - name: Verify DuckDB native binding
+        run: npm run verify:native
+
       - name: Lint
         run: npm run lint
 
       - name: Compile
         run: npm run compile
 
-      # Run unit tests (autocomplete, SQL parsing, etc.)
+      # Run unit tests (autocomplete, SQL parsing, and DuckDBService against
+      # the real native binding: queries, local files, ATTACH, temp dir)
       - name: Run unit tests
         run: npm run test:unit
 
@@ -83,7 +89,13 @@ jobs:
         run: npm ci
 
       - name: Package extension for ${{ matrix.target }}
-        run: npx @vscode/vsce package --target ${{ matrix.target }}
+        run: npx @vscode/vsce package --target ${{ matrix.target }} --out duckdb-${{ matrix.target }}.vsix
+
+      # vsce does not check that the bundled binding matches --target. Check
+      # the VSIX ships only this target's binding, then load it from the
+      # extracted package and run a query.
+      - name: Verify packaged native binding
+        run: node scripts/verify-native-binding.mjs --target ${{ matrix.target }} --vsix duckdb-${{ matrix.target }}.vsix
 
       - name: Upload VSIX artifact
         uses: actions/upload-artifact@v4
@@ -113,25 +125,25 @@ jobs:
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
 
-  # Publish to Open VSX Registry (only on version tags)
-  publish-openvsx:
-    needs: package
-    runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/v')
-    steps:
-      - name: Download all VSIX artifacts
-        uses: actions/download-artifact@v4
-        with:
-          pattern: vsix-*
-          merge-multiple: true
+  # # Publish to Open VSX Registry (only on version tags)
+  # publish-openvsx:
+  #   needs: package
+  #   runs-on: ubuntu-latest
+  #   if: startsWith(github.ref, 'refs/tags/v')
+  #   steps:
+  #     - name: Download all VSIX artifacts
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         pattern: vsix-*
+  #         merge-multiple: true
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.x
+  #     - name: Install Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 22.x
 
-      - name: Publish to Open VSX Registry
-        run: |
-          for vsix in *.vsix; do
-            npx ovsx publish "$vsix" -p ${{ secrets.OVSX_PAT }}
-          done
+  #     - name: Publish to Open VSX Registry
+  #       run: |
+  #         for vsix in *.vsix; do
+  #           npx ovsx publish "$vsix" -p ${{ secrets.OVSX_PAT }}
+  #         done
