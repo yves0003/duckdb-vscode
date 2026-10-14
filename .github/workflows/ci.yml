@@ -13,8 +13,9 @@ on:
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
@@ -45,14 +46,8 @@ jobs:
       - name: Run unit tests
         run: npm run test:unit
 
-      # Run VS Code integration tests with xvfb on Linux
-      - name: Run VS Code tests (Linux)
-        run: xvfb-run -a npm test
-        if: runner.os == 'Linux'
-
-      - name: Run VS Code tests (non-Linux)
+      - name: Run VS Code tests
         run: npm test
-        if: runner.os != 'Linux'
 
   # Package platform-specific extensions
   # Each target must run on a runner that matches its architecture
@@ -60,6 +55,7 @@ jobs:
   package:
     needs: build
     strategy:
+      fail-fast: false
       matrix:
         include:
           # macOS ARM64 (M1/M2) - macos-14+ are ARM64
@@ -68,9 +64,6 @@ jobs:
           # macOS x64 (Intel) - macos-15-intel for x64 builds
           - os: macos-15-intel
             target: darwin-x64
-          # Linux x64
-          - os: ubuntu-latest
-            target: linux-x64
           # Windows x64
           - os: windows-latest
             target: win32-x64

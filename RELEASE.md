@@ -29,7 +29,7 @@ Releases are automated via GitHub Actions. Pushing a version tag triggers the CI
 The `v*` tag triggers the [CI/CD workflow](.github/workflows/ci.yml):
 
 1. **Build** — Lint, compile, and run tests on macOS, Ubuntu, and Windows
-2. **Package** — Create platform-specific `.vsix` files for `darwin-arm64`, `darwin-x64`, `linux-x64`, and `win32-x64`
+2. **Package** — Create platform-specific `.vsix` files for `darwin-arm64`, `darwin-x64`, and `win32-x64`
 3. **Publish** — Upload to both [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=yves0003.f4data-parq) and [Open VSX](https://open-vsx.org/extension/yves0003/f4data-parq)
 
 ## Secrets

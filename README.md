@@ -348,7 +348,7 @@ Maximum history entries to keep (default: `1000`).
 ## Requirements
 
 - VS Code 1.85.0 or later
-- macOS, Linux, or Windows
+- macOS or Windows
 
 ---
 
