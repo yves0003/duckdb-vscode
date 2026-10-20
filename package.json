@@ -2,7 +2,7 @@
   "name": "f4data-parq",
   "displayName": "f4data_parq",
   "description": "A DuckDB client for VS Code — query CSV, Parquet, JSON, and Excel files directly",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "publisher": "yves0003",
   "icon": "resources/icon.png",
   "repository": {

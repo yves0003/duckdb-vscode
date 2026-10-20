@@ -1,7 +1,8 @@
-# 🦆 DuckDB for VS Code
+# 🦆 f4data_parq — DuckDB for VS Code
 
 [![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/yves0003.f4data-parq?label=VS%20Code%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=yves0003.f4data-parq)
-[![Open VSX](https://img.shields.io/open-vsx/v/yves0003/f4data-parq?label=Open%20VSX)](https://open-vsx.org/extension/yves0003/f4data-parq)
+
+> Fork of [ChuckJonas/duckdb-vscode](https://github.com/ChuckJonas/duckdb-vscode), distributed under the MIT license.
 
 > An unofficial DuckDB extension for Visual Studio Code. Query CSV, Parquet, JSON, and Excel files directly. Connect to `.duckdb`, S3, Postgres, Google Sheets and more.
 
@@ -20,13 +21,13 @@ This extension brings DuckDB directly into VS Code with a focus on creating a pr
 
 All queries execute using the [DuckDB Node API](https://www.npmjs.com/package/@duckdb/node-api) embedded in VS Code. By default, queries run against an in-memory database that resets when VS Code closes. You can attach persistent `.duckdb` files or connect to remote sources like Postgres, S3, or Google Sheets.
 
-Performance Note: When you execute a query, the extension creates a temporary table to enable sorting, filtering, and exporting. Results stream into the viewport via infinite scroll — only the visible rows are in the DOM. For large datasets, DuckDB will spill to disk automatically — see [Memory & Performance](#memory--performance) settings if you run into limits.
+Performance Note: When you execute a query, the extension copies the result into an in-memory temporary table to enable sorting, filtering, and exporting. It is written to disk only when it exceeds `memoryLimit`. Results stream into the viewport via infinite scroll — only the visible rows are in the DOM. For large datasets, DuckDB will spill to disk automatically — see [Memory & Performance](#memory--performance) settings if you run into limits.
 
 ## Features
 
 ### SQL Execution
 
-- **Execute queries** — `Cmd+Enter` (Mac) / `Ctrl+Enter` (Windows/Linux)
+- **Execute queries** — `Cmd+Enter` (Mac) / `Ctrl+Enter` (Windows)
 - **Run individual statements** — CodeLens "Run" buttons above each SQL statement
 - **SQL autocomplete** — Table names, columns, functions, and keywords. Can be disabled in settings.
 - **SQL formatting** — Format Document and Format Selection support with configurable keyword casing, indentation style, and logical operator placement
@@ -34,7 +35,7 @@ Performance Note: When you execute a query, the extension creates a temporary ta
 
 ### File Integration
 
-- **Auto-open data files** — `.parquet`, `.csv`/`.tsv`, and `.xlsx` files open directly in the DuckDB data viewer with full pagination, sorting, filtering, and export. No more "binary file" errors for Parquet!
+- **Auto-open data files** — `.parquet`, `.csv`/`.tsv`, and `.xlsx` files open directly in the DuckDB data viewer with infinite scroll, sorting, filtering, and export. No more "binary file" errors for Parquet!
 - **Excel support** — `.xlsx` workbooks with multiple sheets show a sheet picker with column previews; click any sheet to explore it. The DuckDB `excel` extension is auto-installed on first use.
 - **JSON/JSONL support** — `.json`, `.jsonl`, and `.ndjson` available via **right-click → Open With… → DuckDB Data Viewer**
 - **Configurable** — Each file type can be toggled via `duckdb.fileViewer.*` settings
@@ -106,7 +107,9 @@ Performance Note: When you execute a query, the extension creates a temporary ta
 
 ## Settings
 
-Configure in `.vscode/settings.json` or VS Code Settings UI:
+Configure in `.vscode/settings.json` or VS Code Settings UI.
+
+> Settings and commands keep the `duckdb.*` prefix from the original extension.
 
 ### Database Configuration
 
@@ -206,6 +209,17 @@ Landing view when opening a data file (default: `"schema"`).
 
 > **Large files:** In `data` mode the entire file is loaded into a temp table. DuckDB will spill to disk if it exceeds `memoryLimit`, but very large files can still be slow to open. If you regularly work with multi-GB files, keep the default `schema` mode and use the query buttons to sample or project specific columns.
 
+> **Column statistics on open:** In `schema` mode, the overview runs `SUMMARIZE` over every column of the whole file as soon as it opens. This is CPU-bound: expect roughly 15 seconds for 7 million rows × 100 columns. To skip it, open straight into the data with a row cap:
+>
+> ```json
+> {
+>   "duckdb.fileViewer.openMode": "data",
+>   "duckdb.fileViewer.openRowLimit": 1000
+> }
+> ```
+>
+> Selecting only the columns you need before querying also cuts load time roughly in proportion.
+
 #### `duckdb.fileViewer.openRowLimit`
 
 Optional row cap when `openMode` is `"data"` (default: `0` = unlimited).
@@ -262,7 +276,7 @@ Increase this if you work with very large datasets:
 
 #### `duckdb.tempDirectory`
 
-Directory for DuckDB temp/spill files (default: OS temp directory, e.g. `/tmp/duckdb-vscode` on macOS/Linux).
+Directory for DuckDB temp/spill files (default: OS temp directory, a `duckdb-vscode` folder inside it, e.g. `%TEMP%\duckdb-vscode` on Windows).
 
 Leave empty to use the OS temp directory, which is automatically cleaned up on reboot. Override this if the default location doesn't have enough disk space or isn't writable:
 
@@ -327,6 +341,36 @@ Save query history to `.vscode/duckdb-history.db` (default: `false`).
 
 Maximum history entries to keep (default: `1000`).
 
+### Offline / Restricted Networks
+
+The bundled DuckDB downloads some extensions from `extensions.duckdb.org` the first time they are needed:
+
+- `autocomplete` — on every startup (required for SQL completions)
+- `excel` — the first time you open an `.xlsx` file
+
+If that host is blocked (firewall, proxy, no internet), DuckDB initialization fails with an error such as `Failed to download extension autocomplete`. Install the extensions manually by placing the decompressed `.duckdb_extension` files in:
+
+```
+%USERPROFILE%\.duckdb\extensions\v1.5.6\windows_amd64\
+```
+
+For example, in PowerShell (replace `autocomplete` with `excel` for the Excel extension):
+
+```powershell
+$name = "autocomplete"
+$dir  = "$env:USERPROFILE\.duckdb\extensions\v1.5.6\windows_amd64"
+New-Item -ItemType Directory -Force -Path $dir | Out-Null
+$gz   = "$dir\$name.duckdb_extension.gz"
+Invoke-WebRequest -Uri "https://extensions.duckdb.org/v1.5.6/windows_amd64/$name.duckdb_extension.gz" -OutFile $gz
+$in   = [IO.File]::OpenRead($gz)
+$out  = [IO.File]::Create("$dir\$name.duckdb_extension")
+$gzs  = New-Object IO.Compression.GZipStream($in, [IO.Compression.CompressionMode]::Decompress)
+$gzs.CopyTo($out); $gzs.Close(); $out.Close(); $in.Close()
+Remove-Item $gz
+```
+
+Then restart VS Code. The path contains the DuckDB version (`v1.5.6`): repeat this step when a new release bundles a different DuckDB version.
+
 ---
 
 ## Commands
@@ -349,6 +393,8 @@ Maximum history entries to keep (default: `1000`).
 
 - VS Code 1.85.0 or later
 - macOS or Windows
+- Bundled DuckDB 1.5.6
+- Internet access on first launch (or a manual extension install, see [Offline / Restricted Networks](#offline--restricted-networks))
 
 ---
 
