@@ -10,7 +10,7 @@
 import * as assert from "assert";
 import * as vscode from "vscode";
 
-const EXTENSION_ID = "yves0003.f4data-parq";
+const EXTENSION_ID = "yves0003.f4data-prqt";
 
 suite("DuckDB Extension Smoke Tests", function () {
   this.timeout(30_000);
