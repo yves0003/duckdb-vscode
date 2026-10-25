@@ -64,7 +64,7 @@ This triggers the CI/CD pipeline which will:
 ### 5. Monitor the Release
 
 - **GitHub Actions**: https://github.com/yves0003/duckdb-vscode/actions
-- **Marketplace**: https://marketplace.visualstudio.com/items?itemName=yves0003.f4data-prqt
+- **Marketplace**: https://marketplace.visualstudio.com/items?itemName=yves0003.f4dataprqt
 
 The publish typically takes 2-5 minutes after the workflow completes.
 

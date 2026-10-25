@@ -1,8 +1,8 @@
 {
-  "name": "f4data-prqt",
-  "displayName": "f4data_prqt",
-  "description": "A DuckDB client for VS Code — query CSV, Parquet, JSON, and Excel files directly",
-  "version": "0.0.29",
+  "name": "f4dataprqt",
+  "displayName": "f4dataprqt",
+  "description": "Open, explore and query large Parquet, CSV, JSON and Excel files in VS Code — schema, column statistics and SQL, powered by DuckDB",
+  "version": "0.0.31",
   "publisher": "yves0003",
   "icon": "resources/icon.png",
   "repository": {

@@ -6,7 +6,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## Unreleased
 
-## [0.0.29] - 2026-05-31
+## [0.0.31] - 2026-05-31
 
 ### Changed
 - **SQL preview modals are read-only again; editing happens in a real editor.** The in-panel SQL editor introduced in 0.0.26 is removed — the "View SQL" / "SQL Preview" modal is now a syntax-highlighted, read-only preview. Use **Open in Editor** (or **Go to Source File**) to edit the query in a first-class SQL editor with highlighting, completion, and error reporting. The separate filtered/sorted "View Query" modal is folded into the single SQL modal behind an **Apply filters & sort** toggle (shown only when a filter or sort is active), and the standalone "SQL" badge in the stats bar is removed.

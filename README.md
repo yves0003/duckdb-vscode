@@ -1,6 +1,6 @@
-# 🦆 f4data_prqt — DuckDB for VS Code
+# 🦆 f4dataprqt — DuckDB for VS Code
 
-[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/yves0003.f4data-prqt?label=VS%20Code%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=yves0003.f4data-prqt)
+[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/yves0003.f4dataprqt?label=VS%20Code%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=yves0003.f4dataprqt)
 
 > Fork of [ChuckJonas/duckdb-vscode](https://github.com/ChuckJonas/duckdb-vscode), distributed under the MIT license.
 
