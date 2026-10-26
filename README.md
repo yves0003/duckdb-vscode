@@ -1,6 +1,6 @@
-# 🦆 f4dataprqt — DuckDB for VS Code
+# 🦆 f4data parquet — DuckDB for VS Code
 
-[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/yves0003.f4dataprqt?label=VS%20Code%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=yves0003.f4dataprqt)
+[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/yves0003.f4dataparq?label=VS%20Code%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=yves0003.f4dataparq)
 
 > Fork of [ChuckJonas/duckdb-vscode](https://github.com/ChuckJonas/duckdb-vscode), distributed under the MIT license.
 
@@ -377,14 +377,14 @@ Then restart VS Code. The path contains the DuckDB version (`v1.5.6`): repeat th
 
 | Command                    | Keybinding                          | Description                            |
 | -------------------------- | ----------------------------------- | -------------------------------------- |
-| f4dataprqt: Execute Query      | `Cmd+Enter` / `Ctrl+Enter`          | Run all SQL in active editor           |
-| f4dataprqt: Run Statement      | —                                   | Run a single statement (via CodeLens)  |
-| f4dataprqt: Run at Cursor      | `Cmd+Shift+Enter` / `Ctrl+Shift+Enter` | Run the statement under the cursor |
-| f4dataprqt: Select Database    | —                                   | Switch active database                 |
-| f4dataprqt: Manage Extensions  | —                                   | Install/remove extensions              |
-| f4dataprqt: Query File         | —                                   | Query a data file (right-click)        |
-| f4dataprqt: Summarize File     | —                                   | Profile a data file                    |
-| f4dataprqt: Copy Query         | —                                   | Copy SELECT statement for file         |
+| f4data parquet: Execute Query      | `Cmd+Enter` / `Ctrl+Enter`          | Run all SQL in active editor           |
+| f4data parquet: Run Statement      | —                                   | Run a single statement (via CodeLens)  |
+| f4data parquet: Run at Cursor      | `Cmd+Shift+Enter` / `Ctrl+Shift+Enter` | Run the statement under the cursor |
+| f4data parquet: Select Database    | —                                   | Switch active database                 |
+| f4data parquet: Manage Extensions  | —                                   | Install/remove extensions              |
+| f4data parquet: Query File         | —                                   | Query a data file (right-click)        |
+| f4data parquet: Summarize File     | —                                   | Profile a data file                    |
+| f4data parquet: Copy Query         | —                                   | Copy SELECT statement for file         |
 | Go to Source File          | —                                   | Navigate from results to source SQL    |
 
 ---

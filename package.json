@@ -1,8 +1,8 @@
 {
-  "name": "f4dataprqt",
-  "displayName": "f4dataprqt",
+  "name": "f4dataparq",
+  "displayName": "f4data parquet",
   "description": "Open, explore and query large Parquet, CSV, JSON and Excel files in VS Code — schema, column statistics and SQL, powered by DuckDB",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "publisher": "yves0003",
   "icon": "resources/icon.png",
   "repository": {
@@ -39,7 +39,7 @@
       "activitybar": [
         {
           "id": "f4dataprqt-explorer",
-          "title": "f4dataprqt",
+          "title": "f4data parquet",
           "icon": "resources/duckdb-icon.svg"
         }
       ]
@@ -64,41 +64,41 @@
     "commands": [
       {
         "command": "f4dataprqt.executeQuery",
-        "title": "f4dataprqt: Execute Query",
+        "title": "f4data parquet: Execute Query",
         "icon": "$(play)"
       },
       {
         "command": "f4dataprqt.runStatementAtCursor",
-        "title": "f4dataprqt: Run Statement at Cursor"
+        "title": "f4data parquet: Run Statement at Cursor"
       },
       {
         "command": "f4dataprqt.peekResults",
-        "title": "f4dataprqt: Peek Results"
+        "title": "f4data parquet: Peek Results"
       },
       {
         "command": "f4dataprqt.runStatement",
-        "title": "f4dataprqt: Run Statement",
+        "title": "f4data parquet: Run Statement",
         "icon": "$(play)"
       },
       {
         "command": "f4dataprqt.selectDatabase",
-        "title": "f4dataprqt: Select Database"
+        "title": "f4data parquet: Select Database"
       },
       {
         "command": "f4dataprqt.manageExtensions",
-        "title": "f4dataprqt: Manage Extensions"
+        "title": "f4data parquet: Manage Extensions"
       },
       {
         "command": "f4dataprqt.queryFile",
-        "title": "f4dataprqt: Query File"
+        "title": "f4data parquet: Query File"
       },
       {
         "command": "f4dataprqt.copyQuery",
-        "title": "f4dataprqt: Copy Query"
+        "title": "f4data parquet: Copy Query"
       },
       {
         "command": "f4dataprqt.summarizeFile",
-        "title": "f4dataprqt: Summarize File"
+        "title": "f4data parquet: Summarize File"
       },
       {
         "command": "f4dataprqt.explorer.refresh",
@@ -180,7 +180,7 @@
       },
       {
         "command": "f4dataprqt.explorer.findTable",
-        "title": "f4dataprqt: Find Table...",
+        "title": "f4data parquet: Find Table...",
         "icon": "$(search)"
       },
       {
@@ -193,7 +193,7 @@
       },
       {
         "command": "f4dataprqt.history.search",
-        "title": "f4dataprqt: Search History...",
+        "title": "f4data parquet: Search History...",
         "icon": "$(search)"
       },
       {
@@ -634,7 +634,7 @@
       }
     ],
     "configuration": {
-      "title": "f4dataprqt",
+      "title": "f4data parquet",
       "properties": {
         "f4dataprqt.databases": {
           "type": "array",
