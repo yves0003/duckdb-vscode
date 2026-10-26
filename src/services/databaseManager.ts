@@ -371,7 +371,7 @@ WHERE 1=1;
  * Workspace settings helpers
  */
 export function getWorkspaceConfig() {
-  return vscode.workspace.getConfiguration("duckdb");
+  return vscode.workspace.getConfiguration("f4dataprqt");
 }
 
 export async function updateWorkspaceConfig(
@@ -586,7 +586,7 @@ export function getAutoLoadExtensions(): string[] {
 }
 
 /**
- * Migrate legacy `duckdb.extensions` (array) setting to `duckdb.extensions.autoLoad`.
+ * Migrate legacy `f4dataprqt.extensions` (array) setting to `f4dataprqt.extensions.autoLoad`.
  * This handles users who configured the old setting name.
  */
 export async function migrateExtensionsSetting(): Promise<void> {
@@ -611,7 +611,7 @@ export async function migrateExtensionsSetting(): Promise<void> {
       vscode.ConfigurationTarget.Workspace
     );
     console.log(
-      `🦆 Migrated ${oldValue.length} extension(s) from duckdb.extensions to duckdb.extensions.autoLoad`
+      `🦆 Migrated ${oldValue.length} extension(s) from f4dataprqt.extensions to f4dataprqt.extensions.autoLoad`
     );
   }
 }

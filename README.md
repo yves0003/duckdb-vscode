@@ -38,7 +38,7 @@ Performance Note: When you execute a query, the extension copies the result into
 - **Auto-open data files** — `.parquet`, `.csv`/`.tsv`, and `.xlsx` files open directly in the DuckDB data viewer with infinite scroll, sorting, filtering, and export. No more "binary file" errors for Parquet!
 - **Excel support** — `.xlsx` workbooks with multiple sheets show a sheet picker with column previews; click any sheet to explore it. The DuckDB `excel` extension is auto-installed on first use.
 - **JSON/JSONL support** — `.json`, `.jsonl`, and `.ndjson` available via **right-click → Open With… → DuckDB Data Viewer**
-- **Configurable** — Each file type can be toggled via `duckdb.fileViewer.*` settings
+- **Configurable** — Each file type can be toggled via `f4dataprqt.fileViewer.*` settings
 - **Right-click to query** — Select files in Explorer → "DuckDB: Query File" to open a SQL editor with `SELECT * FROM '{file}'`
 - **Summarize files** — Quick data profiling with SUMMARIZE
 
@@ -69,7 +69,7 @@ Performance Note: When you execute a query, the extension copies the result into
 
 - **Peek results** — CodeLens "Peek" button above each statement opens an inline preview without leaving the editor
 - **Execute on demand** — Peek runs the query automatically if no cached results exist
-- **Live preview mode** — Optionally auto-refreshes results as you type (off by default, enable with `duckdb.peekResults.livePreview`)
+- **Live preview mode** — Optionally auto-refreshes results as you type (off by default, enable with `f4dataprqt.peekResults.livePreview`)
 
 > **Important: Remote Data Sources & Live Preview**
 >
@@ -85,7 +85,7 @@ Performance Note: When you execute a query, the extension copies the result into
 > Or add it to your workspace auto-load setting:
 >
 > ```json
-> { "duckdb.extensions.autoLoad": ["cache_httpfs"] }
+> { "f4dataprqt.extensions.autoLoad": ["cache_httpfs"] }
 > ```
 >
 > The extension will prompt you to install `cache_httpfs` if it detects remote URLs in your SQL, but it cannot detect all cases (e.g., views over remote tables, attached remote databases). If you work with remote data, enable `cache_httpfs` proactively.
@@ -101,7 +101,7 @@ Performance Note: When you execute a query, the extension copies the result into
 - **Automatic tracking** — All queries saved with metadata
 - **Re-run queries** — Click to execute again
 - **Open in editor** — Edit and modify past queries
-- **Optional persistence** — Save to `.vscode/duckdb-history.db`
+- **Optional persistence** — Save to `.vscode/f4dataprqt-history.db`
 
 ---
 
@@ -109,17 +109,17 @@ Performance Note: When you execute a query, the extension copies the result into
 
 Configure in `.vscode/settings.json` or VS Code Settings UI.
 
-> Settings and commands keep the `duckdb.*` prefix from the original extension.
+> Settings and commands use the `f4dataprqt.*` prefix, so this extension can be installed alongside the original DuckDB extension.
 
 ### Database Configuration
 
-#### `duckdb.databases`
+#### `f4dataprqt.databases`
 
 Databases to auto-attach on startup.
 
 ```json
 {
-  "duckdb.databases": [
+  "f4dataprqt.databases": [
     {
       "alias": "analytics",
       "type": "file",
@@ -152,53 +152,53 @@ Databases to auto-attach on startup.
 | `attached` | boolean                              | Auto-attach on startup (default: `true`)           |
 | `sql`      | string                               | Raw ATTACH statement (for `manual` type)           |
 
-#### `duckdb.defaultDatabase`
+#### `f4dataprqt.defaultDatabase`
 
 Database to USE after attaching (default: `"memory"`).
 
-#### `duckdb.extensions.autoLoad`
+#### `f4dataprqt.extensions.autoLoad`
 
 Extensions to automatically install and load on startup.
 
 ```json
 {
-  "duckdb.extensions.autoLoad": ["httpfs", "parquet", "json", "postgres"]
+  "f4dataprqt.extensions.autoLoad": ["httpfs", "parquet", "json", "postgres"]
 }
 ```
 
 ### Inline Preview
 
-#### `duckdb.peekResults.livePreview`
+#### `f4dataprqt.peekResults.livePreview`
 
 Enable live preview mode (default: `false`). When enabled, peeking a statement will auto-refresh results as you type. **See the warning above about remote data sources.**
 
-#### `duckdb.peekResults.maxRows`
+#### `f4dataprqt.peekResults.maxRows`
 
 Maximum rows in the peek preview (default: `50`, range: 5–500).
 
-#### `duckdb.peekResults.debounceMs`
+#### `f4dataprqt.peekResults.debounceMs`
 
 Debounce delay in ms for live preview (default: `600`, range: 200–5000). Higher values reduce query frequency.
 
 ### Data File Viewer
 
-#### `duckdb.fileViewer.parquet`
+#### `f4dataprqt.fileViewer.parquet`
 
 Automatically open `.parquet` files with the DuckDB data viewer (default: `true`).
 
-#### `duckdb.fileViewer.csv`
+#### `f4dataprqt.fileViewer.csv`
 
 Automatically open `.csv` and `.tsv` files with the DuckDB data viewer (default: `true`).
 
-#### `duckdb.fileViewer.json`
+#### `f4dataprqt.fileViewer.json`
 
 Automatically open `.jsonl` and `.ndjson` files with the DuckDB data viewer (default: `false`). Plain `.json` files are always available via **Open With…** but are never auto-opened to avoid disrupting config files.
 
-#### `duckdb.fileViewer.excel`
+#### `f4dataprqt.fileViewer.excel`
 
 Automatically open `.xlsx` files with the DuckDB data viewer (default: `true`). For workbooks with multiple sheets, a sheet picker is shown first. Requires the DuckDB `excel` extension, which is auto-installed on first use.
 
-#### `duckdb.fileViewer.openMode`
+#### `f4dataprqt.fileViewer.openMode`
 
 Landing view when opening a data file (default: `"schema"`).
 
@@ -213,14 +213,14 @@ Landing view when opening a data file (default: `"schema"`).
 >
 > ```json
 > {
->   "duckdb.fileViewer.openMode": "data",
->   "duckdb.fileViewer.openRowLimit": 1000
+>   "f4dataprqt.fileViewer.openMode": "data",
+>   "f4dataprqt.fileViewer.openRowLimit": 1000
 > }
 > ```
 >
 > Selecting only the columns you need before querying also cuts load time roughly in proportion.
 
-#### `duckdb.fileViewer.openRowLimit`
+#### `f4dataprqt.fileViewer.openRowLimit`
 
 Optional row cap when `openMode` is `"data"` (default: `0` = unlimited).
 
@@ -228,7 +228,7 @@ Set to a positive number (e.g. `100000`) to apply a `LIMIT` to the auto-open que
 
 ### Results Display
 
-#### `duckdb.resultsLocation`
+#### `f4dataprqt.resultsLocation`
 
 Where to open query results (default: `"active"`).
 
@@ -239,11 +239,11 @@ Where to open query results (default: `"active"`).
 
 **Tip:** To open results below your SQL file instead of beside it, set VS Code's `workbench.editor.openSideBySideDirection` to `"down"`.
 
-#### `duckdb.pageSize`
+#### `f4dataprqt.pageSize`
 
 Chunk size for virtualized scroll in the results table (default: `100`, range: 10–10,000). Rows load on demand as you scroll; this controls how many are fetched per network round-trip to the extension host.
 
-#### `duckdb.maxCopyRows`
+#### `f4dataprqt.maxCopyRows`
 
 Maximum rows for copy/export operations (default: `50000`, range: 1,000–1,000,000).
 
@@ -251,13 +251,13 @@ Maximum rows for copy/export operations (default: `50000`, range: 1,000–1,000,
 
 The extension runs DuckDB inside VS Code's extension host process, which has a limited memory budget (~1.5 GB). To avoid crashing the extension when querying large files, DuckDB is configured to spill to disk when memory is exhausted.
 
-#### `duckdb.memoryLimit`
+#### `f4dataprqt.memoryLimit`
 
 Maximum memory DuckDB can use before spilling to disk (default: `"1.5GB"`).
 
 > **Warning:** The VS Code extension host has a hard heap limit of approximately 1.5 GB. Setting this significantly higher (e.g. `"3GB"`) **will crash the entire extension** with no error message — VS Code simply kills the process. If you experience silent crashes, check this setting first.
 
-#### `duckdb.maxTempDirectorySize`
+#### `f4dataprqt.maxTempDirectorySize`
 
 Maximum disk space for DuckDB temp/spill files (default: `"15GB"`).
 
@@ -271,38 +271,38 @@ This limit was set by the 'max_temp_directory_size' setting.
 Increase this if you work with very large datasets:
 
 ```json
-{ "duckdb.maxTempDirectorySize": "50GB" }
+{ "f4dataprqt.maxTempDirectorySize": "50GB" }
 ```
 
-#### `duckdb.tempDirectory`
+#### `f4dataprqt.tempDirectory`
 
 Directory for DuckDB temp/spill files (default: OS temp directory, a `duckdb-vscode` folder inside it, e.g. `%TEMP%\duckdb-vscode` on Windows).
 
 Leave empty to use the OS temp directory, which is automatically cleaned up on reboot. Override this if the default location doesn't have enough disk space or isn't writable:
 
 ```json
-{ "duckdb.tempDirectory": "/path/to/large/disk/duckdb-temp" }
+{ "f4dataprqt.tempDirectory": "/path/to/large/disk/duckdb-temp" }
 ```
 
 ### Database Explorer
 
-#### `duckdb.explorer.defaultRowLimit`
+#### `f4dataprqt.explorer.defaultRowLimit`
 
 Default row limit for Select Top Rows and Select Distinct Values in the database explorer (default: `1000`, range: 1–100,000).
 
-#### `duckdb.explorer.ignoredSchemas`
+#### `f4dataprqt.explorer.ignoredSchemas`
 
 Schema names to hide from the database explorer tree (default: `[]`). Schemas can also be hidden via right-click → "Hide Schema" in the explorer.
 
 ### Autocomplete
 
-#### `duckdb.autocomplete.enabled`
+#### `f4dataprqt.autocomplete.enabled`
 
 Enable SQL autocomplete suggestions (default: `true`).
 
 ### SQL Formatting
 
-#### `duckdb.format.keywordCase`
+#### `f4dataprqt.format.keywordCase`
 
 Keyword casing style (default: `"upper"`).
 
@@ -312,7 +312,7 @@ Keyword casing style (default: `"upper"`).
 | `lower`    | Lowercase keywords (select, from, where)     |
 | `preserve` | Preserve original keyword casing             |
 
-#### `duckdb.format.indentStyle`
+#### `f4dataprqt.format.indentStyle`
 
 Indentation style (default: `"standard"`).
 
@@ -322,7 +322,7 @@ Indentation style (default: `"standard"`).
 | `tabularLeft`  | Tabular style, keywords left-aligned |
 | `tabularRight` | Tabular style, keywords right-aligned|
 
-#### `duckdb.format.logicalOperatorNewline`
+#### `f4dataprqt.format.logicalOperatorNewline`
 
 Where to place logical operators relative to newlines (default: `"before"`).
 
@@ -333,11 +333,11 @@ Where to place logical operators relative to newlines (default: `"before"`).
 
 ### Query History
 
-#### `duckdb.history.persist`
+#### `f4dataprqt.history.persist`
 
-Save query history to `.vscode/duckdb-history.db` (default: `false`).
+Save query history to `.vscode/f4dataprqt-history.db` (default: `false`).
 
-#### `duckdb.history.maxEntries`
+#### `f4dataprqt.history.maxEntries`
 
 Maximum history entries to keep (default: `1000`).
 
@@ -377,14 +377,14 @@ Then restart VS Code. The path contains the DuckDB version (`v1.5.6`): repeat th
 
 | Command                    | Keybinding                          | Description                            |
 | -------------------------- | ----------------------------------- | -------------------------------------- |
-| DuckDB: Execute Query      | `Cmd+Enter` / `Ctrl+Enter`          | Run all SQL in active editor           |
-| DuckDB: Run Statement      | —                                   | Run a single statement (via CodeLens)  |
-| DuckDB: Run at Cursor      | `Cmd+Shift+Enter` / `Ctrl+Shift+Enter` | Run the statement under the cursor |
-| DuckDB: Select Database    | —                                   | Switch active database                 |
-| DuckDB: Manage Extensions  | —                                   | Install/remove extensions              |
-| DuckDB: Query File         | —                                   | Query a data file (right-click)        |
-| DuckDB: Summarize File     | —                                   | Profile a data file                    |
-| DuckDB: Copy Query         | —                                   | Copy SELECT statement for file         |
+| f4dataprqt: Execute Query      | `Cmd+Enter` / `Ctrl+Enter`          | Run all SQL in active editor           |
+| f4dataprqt: Run Statement      | —                                   | Run a single statement (via CodeLens)  |
+| f4dataprqt: Run at Cursor      | `Cmd+Shift+Enter` / `Ctrl+Shift+Enter` | Run the statement under the cursor |
+| f4dataprqt: Select Database    | —                                   | Switch active database                 |
+| f4dataprqt: Manage Extensions  | —                                   | Install/remove extensions              |
+| f4dataprqt: Query File         | —                                   | Query a data file (right-click)        |
+| f4dataprqt: Summarize File     | —                                   | Profile a data file                    |
+| f4dataprqt: Copy Query         | —                                   | Copy SELECT statement for file         |
 | Go to Source File          | —                                   | Navigate from results to source SQL    |
 
 ---

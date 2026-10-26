@@ -1,10 +1,10 @@
 /**
  * TableEditorProvider - Custom readonly editor for database tables and views
  *
- * Uses a virtual URI scheme (duckdb-table:) so that VS Code's native editor
+ * Uses a virtual URI scheme (f4dataprqt-table:) so that VS Code's native editor
  * tab system manages the tabs, giving us preview-tab behavior for free.
  *
- * URI format: duckdb-table:///database/schema/tableName?view=true
+ * URI format: f4dataprqt-table:///database/schema/tableName?view=true
  */
 import * as vscode from "vscode";
 import { getDuckDBService } from "../services/duckdb";
@@ -28,14 +28,14 @@ export function buildTableUri(
   isView: boolean
 ): vscode.Uri {
   return vscode.Uri.parse(
-    `duckdb-table:///${encodeURIComponent(database)}/${encodeURIComponent(
+    `f4dataprqt-table:///${encodeURIComponent(database)}/${encodeURIComponent(
       schema
     )}/${encodeURIComponent(tableName)}${isView ? "?view=true" : ""}`
   );
 }
 
 /**
- * Parse table info out of a duckdb-table: URI.
+ * Parse table info out of a f4dataprqt-table: URI.
  */
 function parseTableUri(uri: vscode.Uri): {
   database: string;
@@ -53,11 +53,11 @@ function parseTableUri(uri: vscode.Uri): {
 }
 
 // ============================================================================
-// Minimal FileSystemProvider for the duckdb-table: scheme
+// Minimal FileSystemProvider for the f4dataprqt-table: scheme
 // ============================================================================
 
 /**
- * A stub FileSystemProvider so VS Code can "open" duckdb-table: URIs.
+ * A stub FileSystemProvider so VS Code can "open" f4dataprqt-table: URIs.
  * We only need stat() to return a valid entry; reads are never called
  * because the custom editor handles all rendering.
  */
@@ -98,7 +98,7 @@ class TableDocument implements vscode.CustomDocument {
 export class TableEditorProvider
   implements vscode.CustomReadonlyEditorProvider<TableDocument>
 {
-  public static readonly viewType = "duckdb.tableViewer";
+  public static readonly viewType = "f4dataprqt.tableViewer";
 
   constructor(private readonly context: vscode.ExtensionContext) {}
 

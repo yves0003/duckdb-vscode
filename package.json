@@ -31,31 +31,31 @@
   ],
   "activationEvents": [
     "onStartupFinished",
-    "onView:duckdb.databaseExplorer"
+    "onView:f4dataprqt.databaseExplorer"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "duckdb-explorer",
-          "title": "DuckDB",
+          "id": "f4dataprqt-explorer",
+          "title": "f4dataprqt",
           "icon": "resources/duckdb-icon.svg"
         }
       ]
     },
     "views": {
-      "duckdb-explorer": [
+      "f4dataprqt-explorer": [
         {
-          "id": "duckdb.databaseExplorer",
+          "id": "f4dataprqt.databaseExplorer",
           "name": "Databases"
         },
         {
-          "id": "duckdb.queryHistory",
+          "id": "f4dataprqt.queryHistory",
           "name": "History"
         },
         {
-          "id": "duckdb.extensions",
+          "id": "f4dataprqt.extensions",
           "name": "Extensions",
           "visibility": "collapsed"
         }
@@ -63,192 +63,192 @@
     },
     "commands": [
       {
-        "command": "duckdb.executeQuery",
-        "title": "DuckDB: Execute Query",
+        "command": "f4dataprqt.executeQuery",
+        "title": "f4dataprqt: Execute Query",
         "icon": "$(play)"
       },
       {
-        "command": "duckdb.runStatementAtCursor",
-        "title": "DuckDB: Run Statement at Cursor"
+        "command": "f4dataprqt.runStatementAtCursor",
+        "title": "f4dataprqt: Run Statement at Cursor"
       },
       {
-        "command": "duckdb.peekResults",
-        "title": "DuckDB: Peek Results"
+        "command": "f4dataprqt.peekResults",
+        "title": "f4dataprqt: Peek Results"
       },
       {
-        "command": "duckdb.runStatement",
-        "title": "DuckDB: Run Statement",
+        "command": "f4dataprqt.runStatement",
+        "title": "f4dataprqt: Run Statement",
         "icon": "$(play)"
       },
       {
-        "command": "duckdb.selectDatabase",
-        "title": "DuckDB: Select Database"
+        "command": "f4dataprqt.selectDatabase",
+        "title": "f4dataprqt: Select Database"
       },
       {
-        "command": "duckdb.manageExtensions",
-        "title": "DuckDB: Manage Extensions"
+        "command": "f4dataprqt.manageExtensions",
+        "title": "f4dataprqt: Manage Extensions"
       },
       {
-        "command": "duckdb.queryFile",
-        "title": "DuckDB: Query File"
+        "command": "f4dataprqt.queryFile",
+        "title": "f4dataprqt: Query File"
       },
       {
-        "command": "duckdb.copyQuery",
-        "title": "DuckDB: Copy Query"
+        "command": "f4dataprqt.copyQuery",
+        "title": "f4dataprqt: Copy Query"
       },
       {
-        "command": "duckdb.summarizeFile",
-        "title": "DuckDB: Summarize File"
+        "command": "f4dataprqt.summarizeFile",
+        "title": "f4dataprqt: Summarize File"
       },
       {
-        "command": "duckdb.explorer.refresh",
+        "command": "f4dataprqt.explorer.refresh",
         "title": "Refresh",
         "icon": "$(refresh)"
       },
       {
-        "command": "duckdb.explorer.openOverview",
+        "command": "f4dataprqt.explorer.openOverview",
         "title": "Open Overview"
       },
       {
-        "command": "duckdb.explorer.selectTop100",
+        "command": "f4dataprqt.explorer.selectTop100",
         "title": "Select Top Rows"
       },
       {
-        "command": "duckdb.explorer.describe",
+        "command": "f4dataprqt.explorer.describe",
         "title": "Describe"
       },
       {
-        "command": "duckdb.explorer.summarize",
+        "command": "f4dataprqt.explorer.summarize",
         "title": "Summarize"
       },
       {
-        "command": "duckdb.explorer.viewDefinition",
+        "command": "f4dataprqt.explorer.viewDefinition",
         "title": "View Definition"
       },
       {
-        "command": "duckdb.explorer.copyName",
+        "command": "f4dataprqt.explorer.copyName",
         "title": "Copy Name"
       },
       {
-        "command": "duckdb.explorer.selectColumn",
+        "command": "f4dataprqt.explorer.selectColumn",
         "title": "Select Distinct Values"
       },
       {
-        "command": "duckdb.explorer.drop",
+        "command": "f4dataprqt.explorer.drop",
         "title": "Drop..."
       },
       {
-        "command": "duckdb.explorer.useDatabase",
+        "command": "f4dataprqt.explorer.useDatabase",
         "title": "Use Database"
       },
       {
-        "command": "duckdb.explorer.attachDatabase",
+        "command": "f4dataprqt.explorer.attachDatabase",
         "title": "Attach Database...",
         "icon": "$(add)"
       },
       {
-        "command": "duckdb.explorer.detachDatabase",
+        "command": "f4dataprqt.explorer.detachDatabase",
         "title": "Detach Database"
       },
       {
-        "command": "duckdb.explorer.reattachDatabase",
+        "command": "f4dataprqt.explorer.reattachDatabase",
         "title": "Attach Database"
       },
       {
-        "command": "duckdb.explorer.forgetDatabase",
+        "command": "f4dataprqt.explorer.forgetDatabase",
         "title": "Forget Database"
       },
       {
-        "command": "duckdb.explorer.newSchema",
+        "command": "f4dataprqt.explorer.newSchema",
         "title": "New Schema..."
       },
       {
-        "command": "duckdb.explorer.newTable",
+        "command": "f4dataprqt.explorer.newTable",
         "title": "New Table..."
       },
       {
-        "command": "duckdb.explorer.newView",
+        "command": "f4dataprqt.explorer.newView",
         "title": "New View..."
       },
       {
-        "command": "duckdb.explorer.hideSchema",
+        "command": "f4dataprqt.explorer.hideSchema",
         "title": "Hide Schema"
       },
       {
-        "command": "duckdb.explorer.showHiddenSchemas",
+        "command": "f4dataprqt.explorer.showHiddenSchemas",
         "title": "Show Hidden Schemas..."
       },
       {
-        "command": "duckdb.explorer.findTable",
-        "title": "DuckDB: Find Table...",
+        "command": "f4dataprqt.explorer.findTable",
+        "title": "f4dataprqt: Find Table...",
         "icon": "$(search)"
       },
       {
-        "command": "duckdb.explorer.copyAsInsert",
+        "command": "f4dataprqt.explorer.copyAsInsert",
         "title": "Copy as INSERT"
       },
       {
-        "command": "duckdb.explorer.copyAsCreate",
+        "command": "f4dataprqt.explorer.copyAsCreate",
         "title": "Copy as CREATE TABLE"
       },
       {
-        "command": "duckdb.history.search",
-        "title": "DuckDB: Search History...",
+        "command": "f4dataprqt.history.search",
+        "title": "f4dataprqt: Search History...",
         "icon": "$(search)"
       },
       {
-        "command": "duckdb.history.runAgain",
+        "command": "f4dataprqt.history.runAgain",
         "title": "Run Again",
         "icon": "$(play)"
       },
       {
-        "command": "duckdb.history.openInEditor",
+        "command": "f4dataprqt.history.openInEditor",
         "title": "Open in Editor",
         "icon": "$(go-to-file)"
       },
       {
-        "command": "duckdb.history.copySql",
+        "command": "f4dataprqt.history.copySql",
         "title": "Copy SQL",
         "icon": "$(copy)"
       },
       {
-        "command": "duckdb.history.delete",
+        "command": "f4dataprqt.history.delete",
         "title": "Delete"
       },
       {
-        "command": "duckdb.history.clearAll",
+        "command": "f4dataprqt.history.clearAll",
         "title": "Clear All History",
         "icon": "$(trash)"
       },
       {
-        "command": "duckdb.history.refresh",
+        "command": "f4dataprqt.history.refresh",
         "title": "Refresh",
         "icon": "$(refresh)"
       },
       {
-        "command": "duckdb.extensions.add",
+        "command": "f4dataprqt.extensions.add",
         "title": "Install Extension...",
         "icon": "$(add)"
       },
       {
-        "command": "duckdb.extensions.refresh",
+        "command": "f4dataprqt.extensions.refresh",
         "title": "Refresh",
         "icon": "$(refresh)"
       },
       {
-        "command": "duckdb.extensions.load",
+        "command": "f4dataprqt.extensions.load",
         "title": "Load Extension"
       },
       {
-        "command": "duckdb.extensions.addToAutoLoad",
+        "command": "f4dataprqt.extensions.addToAutoLoad",
         "title": "Add to Auto-load"
       },
       {
-        "command": "duckdb.extensions.removeFromAutoLoad",
+        "command": "f4dataprqt.extensions.removeFromAutoLoad",
         "title": "Remove from Auto-load"
       },
       {
-        "command": "duckdb.results.goToSource",
+        "command": "f4dataprqt.results.goToSource",
         "title": "Go to Source File",
         "icon": "$(go-to-file)"
       }
@@ -256,365 +256,365 @@
     "menus": {
       "editor/title": [
         {
-          "command": "duckdb.results.goToSource",
+          "command": "f4dataprqt.results.goToSource",
           "group": "navigation",
           "when": "activeWebviewPanelId == 'duckdbResults'"
         }
       ],
       "view/title": [
         {
-          "command": "duckdb.explorer.attachDatabase",
-          "when": "view == duckdb.databaseExplorer",
+          "command": "f4dataprqt.explorer.attachDatabase",
+          "when": "view == f4dataprqt.databaseExplorer",
           "group": "navigation"
         },
         {
-          "command": "duckdb.explorer.findTable",
-          "when": "view == duckdb.databaseExplorer",
+          "command": "f4dataprqt.explorer.findTable",
+          "when": "view == f4dataprqt.databaseExplorer",
           "group": "navigation"
         },
         {
-          "command": "duckdb.explorer.refresh",
-          "when": "view == duckdb.databaseExplorer",
+          "command": "f4dataprqt.explorer.refresh",
+          "when": "view == f4dataprqt.databaseExplorer",
           "group": "navigation"
         },
         {
-          "command": "duckdb.history.search",
-          "when": "view == duckdb.queryHistory",
+          "command": "f4dataprqt.history.search",
+          "when": "view == f4dataprqt.queryHistory",
           "group": "navigation"
         },
         {
-          "command": "duckdb.history.clearAll",
-          "when": "view == duckdb.queryHistory",
+          "command": "f4dataprqt.history.clearAll",
+          "when": "view == f4dataprqt.queryHistory",
           "group": "navigation"
         },
         {
-          "command": "duckdb.history.refresh",
-          "when": "view == duckdb.queryHistory",
+          "command": "f4dataprqt.history.refresh",
+          "when": "view == f4dataprqt.queryHistory",
           "group": "navigation"
         },
         {
-          "command": "duckdb.extensions.add",
-          "when": "view == duckdb.extensions",
+          "command": "f4dataprqt.extensions.add",
+          "when": "view == f4dataprqt.extensions",
           "group": "navigation"
         },
         {
-          "command": "duckdb.extensions.refresh",
-          "when": "view == duckdb.extensions",
+          "command": "f4dataprqt.extensions.refresh",
+          "when": "view == f4dataprqt.extensions",
           "group": "navigation"
         }
       ],
       "view/item/context": [
         {
-          "command": "duckdb.explorer.useDatabase",
-          "when": "view == duckdb.databaseExplorer && viewItem =~ /^database-attached/",
+          "command": "f4dataprqt.explorer.useDatabase",
+          "when": "view == f4dataprqt.databaseExplorer && viewItem =~ /^database-attached/",
           "group": "0_db@1"
         },
         {
-          "command": "duckdb.explorer.newSchema",
-          "when": "view == duckdb.databaseExplorer && viewItem =~ /^database-attached/",
+          "command": "f4dataprqt.explorer.newSchema",
+          "when": "view == f4dataprqt.databaseExplorer && viewItem =~ /^database-attached/",
           "group": "0_db@2"
         },
         {
-          "command": "duckdb.explorer.detachDatabase",
-          "when": "view == duckdb.databaseExplorer && viewItem == database-attached-configured",
+          "command": "f4dataprqt.explorer.detachDatabase",
+          "when": "view == f4dataprqt.databaseExplorer && viewItem == database-attached-configured",
           "group": "0_db@3"
         },
         {
-          "command": "duckdb.explorer.reattachDatabase",
-          "when": "view == duckdb.databaseExplorer && viewItem == database-detached",
+          "command": "f4dataprqt.explorer.reattachDatabase",
+          "when": "view == f4dataprqt.databaseExplorer && viewItem == database-detached",
           "group": "0_db@1"
         },
         {
-          "command": "duckdb.explorer.forgetDatabase",
-          "when": "view == duckdb.databaseExplorer && viewItem == database-detached",
+          "command": "f4dataprqt.explorer.forgetDatabase",
+          "when": "view == f4dataprqt.databaseExplorer && viewItem == database-detached",
           "group": "0_db@2"
         },
         {
-          "command": "duckdb.explorer.newTable",
-          "when": "view == duckdb.databaseExplorer && viewItem =~ /^(schema|tables-folder)$/",
+          "command": "f4dataprqt.explorer.newTable",
+          "when": "view == f4dataprqt.databaseExplorer && viewItem =~ /^(schema|tables-folder)$/",
           "group": "0_new@1"
         },
         {
-          "command": "duckdb.explorer.newView",
-          "when": "view == duckdb.databaseExplorer && viewItem =~ /^(schema|views-folder)$/",
+          "command": "f4dataprqt.explorer.newView",
+          "when": "view == f4dataprqt.databaseExplorer && viewItem =~ /^(schema|views-folder)$/",
           "group": "0_new@1"
         },
         {
-          "command": "duckdb.explorer.openOverview",
-          "when": "view == duckdb.databaseExplorer && viewItem =~ /^(table|view)$/",
+          "command": "f4dataprqt.explorer.openOverview",
+          "when": "view == f4dataprqt.databaseExplorer && viewItem =~ /^(table|view)$/",
           "group": "1_query@0"
         },
         {
-          "command": "duckdb.explorer.selectTop100",
-          "when": "view == duckdb.databaseExplorer && viewItem =~ /^(table|view)$/",
+          "command": "f4dataprqt.explorer.selectTop100",
+          "when": "view == f4dataprqt.databaseExplorer && viewItem =~ /^(table|view)$/",
           "group": "1_query@1"
         },
         {
-          "command": "duckdb.explorer.describe",
-          "when": "view == duckdb.databaseExplorer && viewItem =~ /^(table|view)$/",
+          "command": "f4dataprqt.explorer.describe",
+          "when": "view == f4dataprqt.databaseExplorer && viewItem =~ /^(table|view)$/",
           "group": "1_query@2"
         },
         {
-          "command": "duckdb.explorer.summarize",
-          "when": "view == duckdb.databaseExplorer && viewItem =~ /^(table|view)$/",
+          "command": "f4dataprqt.explorer.summarize",
+          "when": "view == f4dataprqt.databaseExplorer && viewItem =~ /^(table|view)$/",
           "group": "1_query@3"
         },
         {
-          "command": "duckdb.explorer.viewDefinition",
-          "when": "view == duckdb.databaseExplorer && viewItem =~ /^(table|view)$/",
+          "command": "f4dataprqt.explorer.viewDefinition",
+          "when": "view == f4dataprqt.databaseExplorer && viewItem =~ /^(table|view)$/",
           "group": "1_query@4"
         },
         {
-          "command": "duckdb.explorer.copyName",
-          "when": "view == duckdb.databaseExplorer && viewItem =~ /^(database-attached|database-detached|schema|table|view|column)$/",
+          "command": "f4dataprqt.explorer.copyName",
+          "when": "view == f4dataprqt.databaseExplorer && viewItem =~ /^(database-attached|database-detached|schema|table|view|column)$/",
           "group": "2_copy@1"
         },
         {
-          "command": "duckdb.explorer.copyAsInsert",
-          "when": "view == duckdb.databaseExplorer && viewItem =~ /^(table|view)$/",
+          "command": "f4dataprqt.explorer.copyAsInsert",
+          "when": "view == f4dataprqt.databaseExplorer && viewItem =~ /^(table|view)$/",
           "group": "2_copy@2"
         },
         {
-          "command": "duckdb.explorer.copyAsCreate",
-          "when": "view == duckdb.databaseExplorer && viewItem =~ /^(table|view)$/",
+          "command": "f4dataprqt.explorer.copyAsCreate",
+          "when": "view == f4dataprqt.databaseExplorer && viewItem =~ /^(table|view)$/",
           "group": "2_copy@3"
         },
         {
-          "command": "duckdb.explorer.selectColumn",
-          "when": "view == duckdb.databaseExplorer && viewItem == column",
+          "command": "f4dataprqt.explorer.selectColumn",
+          "when": "view == f4dataprqt.databaseExplorer && viewItem == column",
           "group": "1_query@1"
         },
         {
-          "command": "duckdb.explorer.hideSchema",
-          "when": "view == duckdb.databaseExplorer && viewItem == schema",
+          "command": "f4dataprqt.explorer.hideSchema",
+          "when": "view == f4dataprqt.databaseExplorer && viewItem == schema",
           "group": "3_danger@1"
         },
         {
-          "command": "duckdb.explorer.drop",
-          "when": "view == duckdb.databaseExplorer && viewItem =~ /^(table|view)$/",
+          "command": "f4dataprqt.explorer.drop",
+          "when": "view == f4dataprqt.databaseExplorer && viewItem =~ /^(table|view)$/",
           "group": "3_danger@2"
         },
         {
-          "command": "duckdb.extensions.load",
-          "when": "view == duckdb.extensions && viewItem =~ /^ext-(installed)/",
+          "command": "f4dataprqt.extensions.load",
+          "when": "view == f4dataprqt.extensions && viewItem =~ /^ext-(installed)/",
           "group": "1_ext@1"
         },
         {
-          "command": "duckdb.extensions.addToAutoLoad",
-          "when": "view == duckdb.extensions && viewItem =~ /^ext-(loaded|installed)$/",
+          "command": "f4dataprqt.extensions.addToAutoLoad",
+          "when": "view == f4dataprqt.extensions && viewItem =~ /^ext-(loaded|installed)$/",
           "group": "2_autoload@1"
         },
         {
-          "command": "duckdb.extensions.removeFromAutoLoad",
-          "when": "view == duckdb.extensions && viewItem =~ /^ext-(loaded|installed)-autoload$/",
+          "command": "f4dataprqt.extensions.removeFromAutoLoad",
+          "when": "view == f4dataprqt.extensions && viewItem =~ /^ext-(loaded|installed)-autoload$/",
           "group": "2_autoload@1"
         },
         {
-          "command": "duckdb.history.runAgain",
-          "when": "view == duckdb.queryHistory && viewItem == query",
+          "command": "f4dataprqt.history.runAgain",
+          "when": "view == f4dataprqt.queryHistory && viewItem == query",
           "group": "1_run@1"
         },
         {
-          "command": "duckdb.history.openInEditor",
-          "when": "view == duckdb.queryHistory && viewItem == query",
+          "command": "f4dataprqt.history.openInEditor",
+          "when": "view == f4dataprqt.queryHistory && viewItem == query",
           "group": "1_run@2"
         },
         {
-          "command": "duckdb.history.copySql",
-          "when": "view == duckdb.queryHistory && viewItem == query",
+          "command": "f4dataprqt.history.copySql",
+          "when": "view == f4dataprqt.queryHistory && viewItem == query",
           "group": "2_copy@1"
         },
         {
-          "command": "duckdb.history.delete",
-          "when": "view == duckdb.queryHistory && viewItem == query",
+          "command": "f4dataprqt.history.delete",
+          "when": "view == f4dataprqt.queryHistory && viewItem == query",
           "group": "3_danger@1"
         }
       ],
       "explorer/context": [
         {
-          "command": "duckdb.queryFile",
+          "command": "f4dataprqt.queryFile",
           "when": "resourceExtname =~ /\\.(csv|parquet|json|jsonl|tsv|xlsx)$/i",
           "group": "duckdb@1"
         },
         {
-          "command": "duckdb.copyQuery",
+          "command": "f4dataprqt.copyQuery",
           "when": "resourceExtname =~ /\\.(csv|parquet|json|jsonl|tsv|xlsx)$/i",
           "group": "duckdb@2"
         },
         {
-          "command": "duckdb.summarizeFile",
+          "command": "f4dataprqt.summarizeFile",
           "when": "resourceExtname =~ /\\.(csv|parquet|json|jsonl|tsv|xlsx)$/i",
           "group": "duckdb@3"
         }
       ],
       "commandPalette": [
         {
-          "command": "duckdb.executeQuery",
+          "command": "f4dataprqt.executeQuery",
           "when": "editorLangId == sql"
         },
         {
-          "command": "duckdb.runStatementAtCursor",
+          "command": "f4dataprqt.runStatementAtCursor",
           "when": "editorLangId == sql"
         },
         {
-          "command": "duckdb.explorer.refresh",
+          "command": "f4dataprqt.explorer.refresh",
           "when": "false"
         },
         {
-          "command": "duckdb.explorer.openOverview",
+          "command": "f4dataprqt.explorer.openOverview",
           "when": "false"
         },
         {
-          "command": "duckdb.explorer.selectTop100",
+          "command": "f4dataprqt.explorer.selectTop100",
           "when": "false"
         },
         {
-          "command": "duckdb.explorer.describe",
+          "command": "f4dataprqt.explorer.describe",
           "when": "false"
         },
         {
-          "command": "duckdb.explorer.summarize",
+          "command": "f4dataprqt.explorer.summarize",
           "when": "false"
         },
         {
-          "command": "duckdb.explorer.viewDefinition",
+          "command": "f4dataprqt.explorer.viewDefinition",
           "when": "false"
         },
         {
-          "command": "duckdb.explorer.copyName",
+          "command": "f4dataprqt.explorer.copyName",
           "when": "false"
         },
         {
-          "command": "duckdb.explorer.selectColumn",
+          "command": "f4dataprqt.explorer.selectColumn",
           "when": "false"
         },
         {
-          "command": "duckdb.explorer.drop",
+          "command": "f4dataprqt.explorer.drop",
           "when": "false"
         },
         {
-          "command": "duckdb.explorer.useDatabase",
+          "command": "f4dataprqt.explorer.useDatabase",
           "when": "false"
         },
         {
-          "command": "duckdb.explorer.attachDatabase",
+          "command": "f4dataprqt.explorer.attachDatabase",
           "when": "false"
         },
         {
-          "command": "duckdb.explorer.detachDatabase",
+          "command": "f4dataprqt.explorer.detachDatabase",
           "when": "false"
         },
         {
-          "command": "duckdb.explorer.reattachDatabase",
+          "command": "f4dataprqt.explorer.reattachDatabase",
           "when": "false"
         },
         {
-          "command": "duckdb.explorer.forgetDatabase",
+          "command": "f4dataprqt.explorer.forgetDatabase",
           "when": "false"
         },
         {
-          "command": "duckdb.explorer.newSchema",
+          "command": "f4dataprqt.explorer.newSchema",
           "when": "false"
         },
         {
-          "command": "duckdb.explorer.newTable",
+          "command": "f4dataprqt.explorer.newTable",
           "when": "false"
         },
         {
-          "command": "duckdb.explorer.newView",
+          "command": "f4dataprqt.explorer.newView",
           "when": "false"
         },
         {
-          "command": "duckdb.explorer.hideSchema",
+          "command": "f4dataprqt.explorer.hideSchema",
           "when": "false"
         },
         {
-          "command": "duckdb.explorer.copyAsInsert",
+          "command": "f4dataprqt.explorer.copyAsInsert",
           "when": "false"
         },
         {
-          "command": "duckdb.explorer.copyAsCreate",
+          "command": "f4dataprqt.explorer.copyAsCreate",
           "when": "false"
         },
         {
-          "command": "duckdb.history.runAgain",
+          "command": "f4dataprqt.history.runAgain",
           "when": "false"
         },
         {
-          "command": "duckdb.history.openInEditor",
+          "command": "f4dataprqt.history.openInEditor",
           "when": "false"
         },
         {
-          "command": "duckdb.history.copySql",
+          "command": "f4dataprqt.history.copySql",
           "when": "false"
         },
         {
-          "command": "duckdb.history.delete",
+          "command": "f4dataprqt.history.delete",
           "when": "false"
         },
         {
-          "command": "duckdb.history.clearAll",
+          "command": "f4dataprqt.history.clearAll",
           "when": "false"
         },
         {
-          "command": "duckdb.history.refresh",
+          "command": "f4dataprqt.history.refresh",
           "when": "false"
         },
         {
-          "command": "duckdb.extensions.add",
+          "command": "f4dataprqt.extensions.add",
           "when": "false"
         },
         {
-          "command": "duckdb.extensions.refresh",
+          "command": "f4dataprqt.extensions.refresh",
           "when": "false"
         },
         {
-          "command": "duckdb.extensions.load",
+          "command": "f4dataprqt.extensions.load",
           "when": "false"
         },
         {
-          "command": "duckdb.extensions.addToAutoLoad",
+          "command": "f4dataprqt.extensions.addToAutoLoad",
           "when": "false"
         },
         {
-          "command": "duckdb.extensions.removeFromAutoLoad",
+          "command": "f4dataprqt.extensions.removeFromAutoLoad",
           "when": "false"
         },
         {
-          "command": "duckdb.runStatement",
+          "command": "f4dataprqt.runStatement",
           "when": "false"
         },
         {
-          "command": "duckdb.peekResults",
+          "command": "f4dataprqt.peekResults",
           "when": "false"
         },
         {
-          "command": "duckdb.queryFile",
+          "command": "f4dataprqt.queryFile",
           "when": "false"
         },
         {
-          "command": "duckdb.copyQuery",
+          "command": "f4dataprqt.copyQuery",
           "when": "false"
         },
         {
-          "command": "duckdb.summarizeFile",
+          "command": "f4dataprqt.summarizeFile",
           "when": "false"
         },
         {
-          "command": "duckdb.results.goToSource",
+          "command": "f4dataprqt.results.goToSource",
           "when": "false"
         }
       ]
     },
     "keybindings": [
       {
-        "command": "duckdb.executeQuery",
+        "command": "f4dataprqt.executeQuery",
         "key": "ctrl+enter",
         "mac": "cmd+enter",
         "when": "editorTextFocus && editorLangId == sql"
       },
       {
-        "command": "duckdb.runStatementAtCursor",
+        "command": "f4dataprqt.runStatementAtCursor",
         "key": "ctrl+shift+enter",
         "mac": "cmd+shift+enter",
         "when": "editorTextFocus && editorLangId == sql"
@@ -634,9 +634,9 @@
       }
     ],
     "configuration": {
-      "title": "DuckDB",
+      "title": "f4dataprqt",
       "properties": {
-        "duckdb.databases": {
+        "f4dataprqt.databases": {
           "type": "array",
           "default": [],
           "description": "Configured databases for this workspace",
@@ -681,12 +681,12 @@
             ]
           }
         },
-        "duckdb.defaultDatabase": {
+        "f4dataprqt.defaultDatabase": {
           "type": "string",
           "default": "memory",
           "description": "Default database to USE after attaching"
         },
-        "duckdb.extensions.autoLoad": {
+        "f4dataprqt.extensions.autoLoad": {
           "type": "array",
           "default": [],
           "description": "DuckDB extensions to automatically install and load on startup (e.g. [\"httpfs\", \"spatial\"])",
@@ -694,56 +694,56 @@
             "type": "string"
           }
         },
-        "duckdb.history.persist": {
+        "f4dataprqt.history.persist": {
           "type": "boolean",
           "default": false,
-          "description": "Persist query history to .vscode/duckdb-history.db (survives restarts)"
+          "description": "Persist query history to .vscode/f4dataprqt-history.db (survives restarts)"
         },
-        "duckdb.history.maxEntries": {
+        "f4dataprqt.history.maxEntries": {
           "type": "number",
           "default": 1000,
           "description": "Maximum number of history entries to keep"
         },
-        "duckdb.pageSize": {
+        "f4dataprqt.pageSize": {
           "type": "number",
           "default": 100,
           "minimum": 10,
           "maximum": 10000,
           "description": "Rows fetched per chunk when the results table loads more rows during infinite scroll."
         },
-        "duckdb.maxCopyRows": {
+        "f4dataprqt.maxCopyRows": {
           "type": "number",
           "default": 50000,
           "minimum": 1000,
           "maximum": 1000000,
           "description": "Maximum rows for copy/export operations"
         },
-        "duckdb.memoryLimit": {
+        "f4dataprqt.memoryLimit": {
           "type": "string",
           "default": "1.5GB",
           "description": "Maximum memory DuckDB can use before spilling to disk. The VS Code extension host has a ~1.5GB heap limit — setting this higher may crash the extension.",
           "pattern": "^[0-9]+(\\.[0-9]+)?(KB|MB|GB|TB)$",
           "patternErrorMessage": "Must be a size like '512MB', '1GB', '1.5GB', etc."
         },
-        "duckdb.maxTempDirectorySize": {
+        "f4dataprqt.maxTempDirectorySize": {
           "type": "string",
           "default": "15GB",
           "description": "Maximum disk space DuckDB can use for spilling data to temp files when memory_limit is exceeded. Set to '0' to use all available disk space.",
           "pattern": "^[0-9]+(\\.[0-9]+)?(KB|MB|GB|TB)$",
           "patternErrorMessage": "Must be a size like '5GB', '10GB', '50GB', etc."
         },
-        "duckdb.tempDirectory": {
+        "f4dataprqt.tempDirectory": {
           "type": "string",
           "default": "",
           "description": "Directory for DuckDB temp/spill files. Leave empty to use the OS temp directory."
         },
-        "duckdb.autoAttachTimeoutMs": {
+        "f4dataprqt.autoAttachTimeoutMs": {
           "type": "number",
           "default": 10000,
           "minimum": 1000,
           "description": "Timeout (ms) for auto-attaching each database on startup. If an attach takes longer (e.g. a remote Postgres database while off VPN), it's marked as detached and a notification offers Retry. Does not affect manual attaches."
         },
-        "duckdb.resultsLocation": {
+        "f4dataprqt.resultsLocation": {
           "type": "string",
           "enum": [
             "beside",
@@ -756,19 +756,19 @@
           ],
           "description": "Where to open query results"
         },
-        "duckdb.autocomplete.enabled": {
+        "f4dataprqt.autocomplete.enabled": {
           "type": "boolean",
           "default": true,
           "description": "Enable SQL autocomplete suggestions"
         },
-        "duckdb.explorer.defaultRowLimit": {
+        "f4dataprqt.explorer.defaultRowLimit": {
           "type": "number",
           "default": 1000,
           "minimum": 1,
           "maximum": 100000,
           "description": "Default row limit for Select Top Rows and Select Distinct Values in the database explorer"
         },
-        "duckdb.explorer.ignoredSchemas": {
+        "f4dataprqt.explorer.ignoredSchemas": {
           "type": "array",
           "default": [],
           "description": "Schema names to hide from the database explorer tree",
@@ -776,7 +776,7 @@
             "type": "string"
           }
         },
-        "duckdb.format.keywordCase": {
+        "f4dataprqt.format.keywordCase": {
           "type": "string",
           "enum": [
             "upper",
@@ -791,7 +791,7 @@
           ],
           "description": "Keyword casing style for SQL formatting"
         },
-        "duckdb.format.indentStyle": {
+        "f4dataprqt.format.indentStyle": {
           "type": "string",
           "enum": [
             "standard",
@@ -806,7 +806,7 @@
           ],
           "description": "Indentation style for SQL formatting"
         },
-        "duckdb.format.logicalOperatorNewline": {
+        "f4dataprqt.format.logicalOperatorNewline": {
           "type": "string",
           "enum": [
             "before",
@@ -819,31 +819,31 @@
           ],
           "description": "Where to place logical operators (AND, OR) relative to newlines"
         },
-        "duckdb.peekResults.maxRows": {
+        "f4dataprqt.peekResults.maxRows": {
           "type": "number",
           "default": 50,
           "minimum": 5,
           "maximum": 500,
           "description": "Maximum number of rows to display in the inline Peek Results preview"
         },
-        "duckdb.peekResults.livePreview": {
+        "f4dataprqt.peekResults.livePreview": {
           "type": "boolean",
           "default": false,
           "markdownDescription": "Enable live preview mode: automatically re-runs the query at the cursor as you type.\n\n**Warning:** If your queries reference remote sources (HTTP, S3, etc.), enable the `cache_httpfs` extension to avoid excessive network requests. See the README for details."
         },
-        "duckdb.peekResults.debounceMs": {
+        "f4dataprqt.peekResults.debounceMs": {
           "type": "number",
           "default": 600,
           "minimum": 200,
           "maximum": 5000,
           "description": "Debounce delay (ms) for live preview mode. Higher values reduce query frequency when typing."
         },
-        "duckdb.fileViewer.parquet": {
+        "f4dataprqt.fileViewer.parquet": {
           "type": "boolean",
           "default": true,
           "markdownDescription": "Automatically open `.parquet` files with the DuckDB data viewer, replacing the default binary file error."
         },
-        "duckdb.fileViewer.openMode": {
+        "f4dataprqt.fileViewer.openMode": {
           "type": "string",
           "enum": [
             "data",
@@ -854,26 +854,26 @@
             "Immediately load the first N rows of data (use the schema overview via the Back button)",
             "Show the schema/column overview first; user picks what to query"
           ],
-          "markdownDescription": "Default landing view when opening a data file (parquet, CSV, JSON, etc.).\n\n- `schema` (default): shows column metadata first — safe for large files.\n- `data`: jumps straight into rows (full result materialized into a temp table) — see [`#duckdb.fileViewer.openRowLimit#`](command:workbench.action.openSettings?%22duckdb.fileViewer.openRowLimit%22) for an optional cap."
+          "markdownDescription": "Default landing view when opening a data file (parquet, CSV, JSON, etc.).\n\n- `schema` (default): shows column metadata first — safe for large files.\n- `data`: jumps straight into rows (full result materialized into a temp table) — see [`#f4dataprqt.fileViewer.openRowLimit#`](command:workbench.action.openSettings?%22duckdb.fileViewer.openRowLimit%22) for an optional cap."
         },
-        "duckdb.fileViewer.openRowLimit": {
+        "f4dataprqt.fileViewer.openRowLimit": {
           "type": "number",
           "default": 0,
           "minimum": 0,
           "maximum": 100000000,
-          "markdownDescription": "Optional cap on rows materialized when [`#duckdb.fileViewer.openMode#`](command:workbench.action.openSettings?%22duckdb.fileViewer.openMode%22) is `data`.\n\n- `0` (default) — no cap; the full result set is loaded into a DuckDB temp table and rows are streamed into the table on demand via infinite scroll.\n- `> 0` — applies `LIMIT N` to the auto-open query. Useful for huge files where you only want a sample."
+          "markdownDescription": "Optional cap on rows materialized when [`#f4dataprqt.fileViewer.openMode#`](command:workbench.action.openSettings?%22duckdb.fileViewer.openMode%22) is `data`.\n\n- `0` (default) — no cap; the full result set is loaded into a DuckDB temp table and rows are streamed into the table on demand via infinite scroll.\n- `> 0` — applies `LIMIT N` to the auto-open query. Useful for huge files where you only want a sample."
         },
-        "duckdb.fileViewer.csv": {
+        "f4dataprqt.fileViewer.csv": {
           "type": "boolean",
           "default": true,
           "markdownDescription": "Automatically open `.csv` and `.tsv` files with the DuckDB data viewer.\n\nWhen disabled, you can still open individual files with DuckDB via **right-click → Open With… → DuckDB Data Viewer**."
         },
-        "duckdb.fileViewer.json": {
+        "f4dataprqt.fileViewer.json": {
           "type": "boolean",
           "default": false,
           "markdownDescription": "Automatically open `.jsonl` and `.ndjson` files with the DuckDB data viewer.\n\nPlain `.json` files are always available via **Open With…** but are never auto-opened (they are too commonly used for configuration)."
         },
-        "duckdb.fileViewer.excel": {
+        "f4dataprqt.fileViewer.excel": {
           "type": "boolean",
           "default": true,
           "markdownDescription": "Automatically open `.xlsx` files with the DuckDB data viewer.\n\nFor workbooks with multiple sheets, a sheet picker is shown first. Requires the DuckDB `excel` extension (auto-installed on first use)."
@@ -882,7 +882,7 @@
     },
     "customEditors": [
       {
-        "viewType": "duckdb.tableViewer",
+        "viewType": "f4dataprqt.tableViewer",
         "displayName": "DuckDB Table Viewer",
         "selector": [
           {
@@ -892,7 +892,7 @@
         "priority": "option"
       },
       {
-        "viewType": "duckdb.dataFileViewer",
+        "viewType": "f4dataprqt.dataFileViewer",
         "displayName": "DuckDB Data Viewer",
         "selector": [
           {

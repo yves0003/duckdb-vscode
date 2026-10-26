@@ -259,13 +259,13 @@ export async function activate(context: vscode.ExtensionContext) {
   console.log("🦆 DuckDB extension is now active!");
 
   // Create diagnostic collection for SQL errors
-  diagnosticCollection = vscode.languages.createDiagnosticCollection("duckdb");
+  diagnosticCollection = vscode.languages.createDiagnosticCollection("f4dataprqt");
   context.subscriptions.push(diagnosticCollection);
 
   // Initialize DuckDB on activation
   const db = getDuckDBService();
   try {
-    const duckdbConfig = vscode.workspace.getConfiguration("duckdb");
+    const duckdbConfig = vscode.workspace.getConfiguration("f4dataprqt");
     const memoryLimit = duckdbConfig.get<string>("memoryLimit", "1.5GB");
     const maxTempDirectorySize = duckdbConfig.get<string>(
       "maxTempDirectorySize",
@@ -319,26 +319,26 @@ export async function activate(context: vscode.ExtensionContext) {
     vscode.StatusBarAlignment.Right,
     50,
   );
-  statusBarItem.command = "duckdb.selectDatabase";
+  statusBarItem.command = "f4dataprqt.selectDatabase";
   updateStatusBar();
   statusBarItem.show();
   context.subscriptions.push(statusBarItem);
 
   // Get settings
   const getPageSize = () =>
-    vscode.workspace.getConfiguration("duckdb").get<number>("pageSize", 1000);
+    vscode.workspace.getConfiguration("f4dataprqt").get<number>("pageSize", 1000);
   const getMaxCopyRows = () =>
     vscode.workspace
-      .getConfiguration("duckdb")
+      .getConfiguration("f4dataprqt")
       .get<number>("maxCopyRows", 50000);
   const getDefaultRowLimit = () =>
     vscode.workspace
-      .getConfiguration("duckdb")
+      .getConfiguration("f4dataprqt")
       .get<number>("explorer.defaultRowLimit", 1000);
 
   // Register Execute Query command
   const executeCmd = vscode.commands.registerCommand(
-    "duckdb.executeQuery",
+    "f4dataprqt.executeQuery",
     async () => {
       const editor = vscode.window.activeTextEditor;
       if (!editor) {
@@ -456,7 +456,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // Register Run Statement command (from CodeLens)
   const runStatementCmd = vscode.commands.registerCommand(
-    "duckdb.runStatement",
+    "f4dataprqt.runStatement",
     async (uri: vscode.Uri, startOffset: number, endOffset: number) => {
       // Find the document
       const document = await vscode.workspace.openTextDocument(uri);
@@ -583,7 +583,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // Register Run Statement at Cursor command (keybinding: Cmd+Shift+Enter)
   const runStatementAtCursorCmd = vscode.commands.registerCommand(
-    "duckdb.runStatementAtCursor",
+    "f4dataprqt.runStatementAtCursor",
     async () => {
       const editor = vscode.window.activeTextEditor;
       if (!editor || editor.document.languageId !== "sql") {
@@ -623,7 +623,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
       // Delegate to the existing runStatement command
       await vscode.commands.executeCommand(
-        "duckdb.runStatement",
+        "f4dataprqt.runStatement",
         document.uri,
         target.startOffset,
         target.endOffset,
@@ -642,7 +642,7 @@ export async function activate(context: vscode.ExtensionContext) {
   let livePeekDocUri: string | undefined;
   const getLivePeekDebounceMs = () =>
     vscode.workspace
-      .getConfiguration("duckdb")
+      .getConfiguration("f4dataprqt")
       .get<number>("peekResults.debounceMs", 600);
 
   // ── HTTP safety guard state ───────────────────────────────────────────
@@ -898,7 +898,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // Register Peek Results command (inline preview via Peek View)
   const peekResultsCmd = vscode.commands.registerCommand(
-    "duckdb.peekResults",
+    "f4dataprqt.peekResults",
     async (
       uri: vscode.Uri,
       startOffset: number,
@@ -949,7 +949,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
       // Start live preview mode if the setting is enabled
       const livePreviewEnabled = vscode.workspace
-        .getConfiguration("duckdb")
+        .getConfiguration("f4dataprqt")
         .get<boolean>("peekResults.livePreview", false);
 
       if (livePreviewEnabled && !livePeekDocUri) {
@@ -970,7 +970,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // Register Select Database command (status bar click)
   const selectDbCmd = vscode.commands.registerCommand(
-    "duckdb.selectDatabase",
+    "f4dataprqt.selectDatabase",
     async () => {
       // Get combined database state from DuckDB and settings
       const databases = await getCombinedDatabases(async (sql) => ({
@@ -1355,7 +1355,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // Register Manage Extensions command
   const manageExtCmd = vscode.commands.registerCommand(
-    "duckdb.manageExtensions",
+    "f4dataprqt.manageExtensions",
     async () => {
       await showExtensionsQuickPick(db);
       extensionsExplorer.refresh();
@@ -1378,7 +1378,7 @@ export async function activate(context: vscode.ExtensionContext) {
   }
 
   const queryFileCmd = vscode.commands.registerCommand(
-    "duckdb.queryFile",
+    "f4dataprqt.queryFile",
     async (uri: vscode.Uri) => {
       if (!uri) {
         vscode.window.showWarningMessage("No file selected");
@@ -1412,7 +1412,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const copyQueryCmd = vscode.commands.registerCommand(
-    "duckdb.copyQuery",
+    "f4dataprqt.copyQuery",
     async (uri: vscode.Uri) => {
       if (!uri) {
         vscode.window.showWarningMessage("No file selected");
@@ -1426,7 +1426,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const summarizeFileCmd = vscode.commands.registerCommand(
-    "duckdb.summarizeFile",
+    "f4dataprqt.summarizeFile",
     async (uri: vscode.Uri) => {
       if (!uri) {
         vscode.window.showWarningMessage("No file selected");
@@ -1444,7 +1444,7 @@ export async function activate(context: vscode.ExtensionContext) {
       await vscode.window.showTextDocument(doc);
 
       // Execute the query
-      await vscode.commands.executeCommand("duckdb.executeQuery");
+      await vscode.commands.executeCommand("f4dataprqt.executeQuery");
     },
   );
 
@@ -1506,7 +1506,7 @@ export async function activate(context: vscode.ExtensionContext) {
     {
       async provideCompletionItems(document, position) {
         // Check if autocomplete is enabled
-        const config = vscode.workspace.getConfiguration("duckdb");
+        const config = vscode.workspace.getConfiguration("f4dataprqt");
         if (!config.get<boolean>("autocomplete.enabled", false)) {
           return [];
         }
@@ -1605,7 +1605,7 @@ export async function activate(context: vscode.ExtensionContext) {
     return { rows };
   });
 
-  const treeView = vscode.window.createTreeView("duckdb.databaseExplorer", {
+  const treeView = vscode.window.createTreeView("f4dataprqt.databaseExplorer", {
     treeDataProvider: databaseExplorer,
     showCollapseAll: true,
   });
@@ -1622,14 +1622,14 @@ export async function activate(context: vscode.ExtensionContext) {
   });
 
   const explorerRefreshCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.refresh",
+    "f4dataprqt.explorer.refresh",
     () => {
       databaseExplorer.refresh();
     },
   );
 
   const explorerSelectTop100Cmd = vscode.commands.registerCommand(
-    "duckdb.explorer.selectTop100",
+    "f4dataprqt.explorer.selectTop100",
     async (node: ExplorerNode) => {
       if (node.type !== "table" && node.type !== "view") {
         return;
@@ -1660,7 +1660,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const explorerDescribeCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.describe",
+    "f4dataprqt.explorer.describe",
     async (node: ExplorerNode) => {
       if (node.type !== "table" && node.type !== "view") {
         return;
@@ -1686,7 +1686,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const explorerSummarizeCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.summarize",
+    "f4dataprqt.explorer.summarize",
     async (node: ExplorerNode) => {
       if (node.type !== "table" && node.type !== "view") {
         return;
@@ -1712,7 +1712,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const explorerViewDefinitionCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.viewDefinition",
+    "f4dataprqt.explorer.viewDefinition",
     async (node: ExplorerNode) => {
       if (node.type !== "table" && node.type !== "view") {
         return;
@@ -1756,7 +1756,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const explorerOpenOverviewCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.openOverview",
+    "f4dataprqt.explorer.openOverview",
     async (node: ExplorerNode) => {
       if (node.type !== "table" && node.type !== "view") {
         return;
@@ -1778,7 +1778,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const explorerCopyNameCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.copyName",
+    "f4dataprqt.explorer.copyName",
     async (node: ExplorerNode) => {
       let name = node.name;
       if (node.type === "column") {
@@ -1798,7 +1798,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const explorerSelectColumnCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.selectColumn",
+    "f4dataprqt.explorer.selectColumn",
     async (node: ExplorerNode) => {
       if (node.type !== "column") {
         return;
@@ -1826,7 +1826,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const explorerDropCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.drop",
+    "f4dataprqt.explorer.drop",
     async (node: ExplorerNode) => {
       if (node.type !== "table" && node.type !== "view") {
         return;
@@ -1862,7 +1862,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const explorerHideSchemaCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.hideSchema",
+    "f4dataprqt.explorer.hideSchema",
     async (node: ExplorerNode) => {
       if (node.type !== "schema") {
         return;
@@ -1885,7 +1885,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const explorerShowHiddenSchemasCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.showHiddenSchemas",
+    "f4dataprqt.explorer.showHiddenSchemas",
     async () => {
       const ignored = getIgnoredSchemas();
       if (ignored.length === 0) {
@@ -1919,7 +1919,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const explorerFindTableCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.findTable",
+    "f4dataprqt.explorer.findTable",
     async () => {
       const queryFn = async (sql: string) => ({
         rows: await db.query(sql),
@@ -2006,7 +2006,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const explorerCopyAsInsertCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.copyAsInsert",
+    "f4dataprqt.explorer.copyAsInsert",
     async (node: ExplorerNode) => {
       if (node.type !== "table" && node.type !== "view") {
         return;
@@ -2071,7 +2071,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const explorerCopyAsCreateCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.copyAsCreate",
+    "f4dataprqt.explorer.copyAsCreate",
     async (node: ExplorerNode) => {
       if (node.type !== "table" && node.type !== "view") {
         return;
@@ -2113,7 +2113,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // Database management commands
   const explorerUseDatabaseCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.useDatabase",
+    "f4dataprqt.explorer.useDatabase",
     async (node: ExplorerNode) => {
       if (node.type !== "database") {
         return;
@@ -2135,16 +2135,16 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const explorerAttachDatabaseCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.attachDatabase",
+    "f4dataprqt.explorer.attachDatabase",
     async () => {
       // Reuse the existing selectDatabase command which has attach functionality
-      await vscode.commands.executeCommand("duckdb.selectDatabase");
+      await vscode.commands.executeCommand("f4dataprqt.selectDatabase");
       databaseExplorer.refresh();
     },
   );
 
   const explorerDetachDatabaseCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.detachDatabase",
+    "f4dataprqt.explorer.detachDatabase",
     async (node: ExplorerNode) => {
       if (node.type !== "database") {
         return;
@@ -2187,7 +2187,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // Reattach a detached database (prompts for read-only mode for file databases)
   const explorerReattachDatabaseCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.reattachDatabase",
+    "f4dataprqt.explorer.reattachDatabase",
     async (node: ExplorerNode, forceReadOnly?: boolean) => {
       if (node.type !== "database-detached") {
         return;
@@ -2275,7 +2275,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // Forget a database (remove from settings completely)
   const explorerForgetDatabaseCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.forgetDatabase",
+    "f4dataprqt.explorer.forgetDatabase",
     async (node: ExplorerNode) => {
       if (node.type !== "database-detached") {
         return;
@@ -2303,7 +2303,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // New Schema command - creates directly
   const explorerNewSchemaCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.newSchema",
+    "f4dataprqt.explorer.newSchema",
     async (node: ExplorerNode) => {
       if (node.type !== "database") {
         return;
@@ -2341,7 +2341,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // New Table command - opens boilerplate
   const explorerNewTableCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.newTable",
+    "f4dataprqt.explorer.newTable",
     async (node: ExplorerNode) => {
       const database = node.database || node.name;
       const schema = node.type === "schema" ? node.name : node.schema || "main";
@@ -2358,7 +2358,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // New View command - opens boilerplate
   const explorerNewViewCmd = vscode.commands.registerCommand(
-    "duckdb.explorer.newView",
+    "f4dataprqt.explorer.newView",
     async (node: ExplorerNode) => {
       const database = node.database || node.name;
       const schema = node.type === "schema" ? node.name : node.schema || "main";
@@ -2379,20 +2379,20 @@ export async function activate(context: vscode.ExtensionContext) {
 
   const historyExplorer = new HistoryExplorer();
 
-  const historyTreeView = vscode.window.createTreeView("duckdb.queryHistory", {
+  const historyTreeView = vscode.window.createTreeView("f4dataprqt.queryHistory", {
     treeDataProvider: historyExplorer,
     showCollapseAll: true,
   });
 
   const historyRefreshCmd = vscode.commands.registerCommand(
-    "duckdb.history.refresh",
+    "f4dataprqt.history.refresh",
     () => {
       historyExplorer.refresh();
     },
   );
 
   const historySearchCmd = vscode.commands.registerCommand(
-    "duckdb.history.search",
+    "f4dataprqt.history.search",
     async () => {
       const entries = getHistoryService().getEntries();
 
@@ -2511,7 +2511,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const historyRunAgainCmd = vscode.commands.registerCommand(
-    "duckdb.history.runAgain",
+    "f4dataprqt.history.runAgain",
     async (node: HistoryNode) => {
       if (node.type !== "query" || !node.entry) {
         return;
@@ -2550,7 +2550,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const historyOpenInEditorCmd = vscode.commands.registerCommand(
-    "duckdb.history.openInEditor",
+    "f4dataprqt.history.openInEditor",
     async (node: HistoryNode) => {
       if (node.type !== "query" || !node.entry) {
         return;
@@ -2565,7 +2565,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const historyCopySqlCmd = vscode.commands.registerCommand(
-    "duckdb.history.copySql",
+    "f4dataprqt.history.copySql",
     async (node: HistoryNode) => {
       if (node.type !== "query" || !node.entry) {
         return;
@@ -2577,7 +2577,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const historyDeleteCmd = vscode.commands.registerCommand(
-    "duckdb.history.delete",
+    "f4dataprqt.history.delete",
     async (node: HistoryNode) => {
       if (node.type !== "query" || !node.entry) {
         return;
@@ -2588,7 +2588,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const historyClearAllCmd = vscode.commands.registerCommand(
-    "duckdb.history.clearAll",
+    "f4dataprqt.history.clearAll",
     async () => {
       const confirm = await vscode.window.showWarningMessage(
         "Clear all query history?",
@@ -2612,19 +2612,19 @@ export async function activate(context: vscode.ExtensionContext) {
     return { rows };
   });
 
-  const extensionsTreeView = vscode.window.createTreeView("duckdb.extensions", {
+  const extensionsTreeView = vscode.window.createTreeView("f4dataprqt.extensions", {
     treeDataProvider: extensionsExplorer,
   });
 
   const extensionsRefreshCmd = vscode.commands.registerCommand(
-    "duckdb.extensions.refresh",
+    "f4dataprqt.extensions.refresh",
     () => {
       extensionsExplorer.refresh();
     },
   );
 
   const extensionsAddCmd = vscode.commands.registerCommand(
-    "duckdb.extensions.add",
+    "f4dataprqt.extensions.add",
     async () => {
       // Reuse the existing manageExtensions logic
       await showExtensionsQuickPick(db);
@@ -2633,7 +2633,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const extensionsLoadCmd = vscode.commands.registerCommand(
-    "duckdb.extensions.load",
+    "f4dataprqt.extensions.load",
     async (node: ExtensionNode) => {
       if (node.type !== "extension") {
         return;
@@ -2651,7 +2651,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const extensionsAddToAutoLoadCmd = vscode.commands.registerCommand(
-    "duckdb.extensions.addToAutoLoad",
+    "f4dataprqt.extensions.addToAutoLoad",
     async (node: ExtensionNode) => {
       if (node.type !== "extension") {
         return;
@@ -2663,7 +2663,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
 
   const extensionsRemoveFromAutoLoadCmd = vscode.commands.registerCommand(
-    "duckdb.extensions.removeFromAutoLoad",
+    "f4dataprqt.extensions.removeFromAutoLoad",
     async (node: ExtensionNode) => {
       if (node.type !== "extension") {
         return;
@@ -2709,7 +2709,7 @@ export async function activate(context: vscode.ExtensionContext) {
   // Register Table Editor (database table/view overview)
   context.subscriptions.push(
     vscode.workspace.registerFileSystemProvider(
-      "duckdb-table",
+      "f4dataprqt-table",
       new TableFileSystemProvider(),
       { isReadonly: true },
     ),
@@ -2732,7 +2732,7 @@ export async function activate(context: vscode.ExtensionContext) {
   );
   context.subscriptions.push(
     vscode.workspace.onDidChangeConfiguration((e) => {
-      if (e.affectsConfiguration("duckdb.fileViewer")) {
+      if (e.affectsConfiguration("f4dataprqt.fileViewer")) {
         syncEditorAssociations().catch((err) =>
           console.error("🦆 Failed to sync editor associations:", err),
         );
@@ -2742,7 +2742,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // Register "Go to Source" command for results panel
   const goToSourceCmd = vscode.commands.registerCommand(
-    "duckdb.results.goToSource",
+    "f4dataprqt.results.goToSource",
     async () => {
       const sourceUri = getActiveResultsSourceUri();
       if (sourceUri) {
@@ -3079,11 +3079,11 @@ async function attachSingleDatabase(
       .showWarningMessage(message, "Retry", "Open Settings")
       .then((choice) => {
         if (choice === "Retry") {
-          vscode.commands.executeCommand("duckdb.selectDatabase");
+          vscode.commands.executeCommand("f4dataprqt.selectDatabase");
         } else if (choice === "Open Settings") {
           vscode.commands.executeCommand(
             "workbench.action.openSettings",
-            "duckdb.databases",
+            "f4dataprqt.databases",
           );
         }
       });

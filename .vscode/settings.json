@@ -12,9 +12,9 @@
 		"*.copilotmd": "vscode.markdown.preview.editor",
 		"{git,gitlens,conflictResolution,vscode-local-history}:/**/*.tc.json": "default",
 		"{git,gitlens,conflictResolution,vscode-local-history}:/**/*.{asl.json,asl.yaml,asl.yml}": "default",
-		"*.parquet": "duckdb.dataFileViewer",
-		"*.csv": "duckdb.dataFileViewer",
-		"*.tsv": "duckdb.dataFileViewer",
-		"*.xlsx": "duckdb.dataFileViewer"
+		"*.parquet": "f4dataprqt.dataFileViewer",
+		"*.csv": "f4dataprqt.dataFileViewer",
+		"*.tsv": "f4dataprqt.dataFileViewer",
+		"*.xlsx": "f4dataprqt.dataFileViewer"
 	}
 }

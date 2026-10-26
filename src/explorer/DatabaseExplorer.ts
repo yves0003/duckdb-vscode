@@ -119,7 +119,7 @@ export class DatabaseExplorer implements vscode.TreeDataProvider<ExplorerNode> {
     // Double-click tables/views to open the overview panel
     if (element.type === "table" || element.type === "view") {
       item.command = {
-        command: "duckdb.explorer.openOverview",
+        command: "f4dataprqt.explorer.openOverview",
         title: "Open Overview",
         arguments: [element],
       };

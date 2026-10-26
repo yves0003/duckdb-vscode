@@ -29,7 +29,7 @@ class DataFileDocument implements vscode.CustomDocument {
 export class DataFileEditorProvider
   implements vscode.CustomReadonlyEditorProvider<DataFileDocument>
 {
-  public static readonly viewType = "duckdb.dataFileViewer";
+  public static readonly viewType = "f4dataprqt.dataFileViewer";
 
   constructor(private readonly context: vscode.ExtensionContext) {}
 
@@ -291,7 +291,7 @@ export class DataFileEditorProvider
  * set is materialized and the table loads rows on demand via infinite scroll.
  */
 function getAutoLoadOptions(): { limit?: number } | undefined {
-  const cfg = vscode.workspace.getConfiguration("duckdb");
+  const cfg = vscode.workspace.getConfiguration("f4dataprqt");
   const mode = cfg.get<string>("fileViewer.openMode", "schema");
   if (mode !== "data") return undefined;
   const limit = cfg.get<number>("fileViewer.openRowLimit", 0);
@@ -337,14 +337,14 @@ const FILE_TYPE_ASSOCIATIONS: Array<{
 
 /**
  * Synchronize `workbench.editorAssociations` with the current
- * `duckdb.fileViewer.*` settings. Called on activation and when
+ * `f4dataprqt.fileViewer.*` settings. Called on activation and when
  * settings change.
  *
  * Only touches associations that are unset or owned by this extension.
  * User-configured associations for other editors are never overwritten.
  */
 export async function syncEditorAssociations(): Promise<void> {
-  const duckdbConfig = vscode.workspace.getConfiguration("duckdb");
+  const duckdbConfig = vscode.workspace.getConfiguration("f4dataprqt");
   const workbenchConfig = vscode.workspace.getConfiguration("workbench");
 
   const associations =

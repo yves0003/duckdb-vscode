@@ -96,7 +96,7 @@ export function setupOverviewWebview(
   source: OverviewDataSource,
   options: OverviewWebviewOptions = {}
 ): void {
-  const config = vscode.workspace.getConfiguration("duckdb");
+  const config = vscode.workspace.getConfiguration("f4dataprqt");
   const pageSize = config.get<number>("pageSize", 100);
   const maxCopyRows = config.get<number>("maxCopyRows", 50000);
   const db = getDuckDBService();
@@ -597,7 +597,7 @@ export function setupMultiTableOverviewWebview(
   context: vscode.ExtensionContext,
   multiSource: MultiTableDataSource
 ): void {
-  const config = vscode.workspace.getConfiguration("duckdb");
+  const config = vscode.workspace.getConfiguration("f4dataprqt");
   const pageSize = config.get<number>("pageSize", 1000);
   const maxCopyRows = config.get<number>("maxCopyRows", 50000);
   const db = getDuckDBService();

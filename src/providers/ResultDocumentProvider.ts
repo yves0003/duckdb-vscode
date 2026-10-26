@@ -2,7 +2,7 @@
  * Result Document Provider
  *
  * A TextDocumentContentProvider that serves a single virtual document for the
- * "duckdb-results" URI scheme, used by the Peek View widget to display inline
+ * "f4dataprqt-results" URI scheme, used by the Peek View widget to display inline
  * query result previews.
  *
  * The provider maintains one "active peek" slot. Every peek/live-refresh writes
@@ -17,7 +17,7 @@ import { CachedResult } from "../services/resultCacheService";
 // URI scheme
 // ============================================================================
 
-export const RESULTS_SCHEME = "duckdb-results";
+export const RESULTS_SCHEME = "f4dataprqt-results";
 
 // ============================================================================
 // Provider
@@ -88,7 +88,7 @@ export class ResultDocumentProvider
 
 function getMaxPeekRows(): number {
   return vscode.workspace
-    .getConfiguration("duckdb")
+    .getConfiguration("f4dataprqt")
     .get<number>("peekResults.maxRows", 50);
 }
 

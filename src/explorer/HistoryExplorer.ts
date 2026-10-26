@@ -59,7 +59,7 @@ export class HistoryExplorer implements vscode.TreeDataProvider<HistoryNode> {
     // Make query nodes clickable to run
     if (element.type === 'query' && element.entry) {
       item.command = {
-        command: 'duckdb.history.runAgain',
+        command: 'f4dataprqt.history.runAgain',
         title: 'Run Again',
         arguments: [element],
       };

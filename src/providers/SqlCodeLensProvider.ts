@@ -112,7 +112,7 @@ export class SqlCodeLensProvider implements vscode.CodeLensProvider {
       lenses.push(
         new vscode.CodeLens(topRange, {
           title: `$(database) ${displayName}`,
-          command: "duckdb.selectDatabase",
+          command: "f4dataprqt.selectDatabase",
           tooltip: "Click to switch database",
         })
       );
@@ -130,7 +130,7 @@ export class SqlCodeLensProvider implements vscode.CodeLensProvider {
         lenses.push(
           new vscode.CodeLens(topRange, {
             title: "$(play) Run All",
-            command: "duckdb.executeQuery",
+            command: "f4dataprqt.executeQuery",
             tooltip: "Execute all SQL statements in this file",
           })
         );
@@ -167,7 +167,7 @@ export class SqlCodeLensProvider implements vscode.CodeLensProvider {
           lenses.push(
             new vscode.CodeLens(range, {
               title: `$(play) Run Statement`,
-              command: "duckdb.runStatement",
+              command: "f4dataprqt.runStatement",
               arguments: [document.uri, stmt.startOffset, stmt.endOffset],
               tooltip: `Execute: ${preview}`,
             })
@@ -180,7 +180,7 @@ export class SqlCodeLensProvider implements vscode.CodeLensProvider {
         lenses.push(
           new vscode.CodeLens(range, {
             title: `$(eye) Peek`,
-            command: "duckdb.peekResults",
+            command: "f4dataprqt.peekResults",
             arguments: [
               document.uri,
               stmt.startOffset,
@@ -204,7 +204,7 @@ export class SqlCodeLensProvider implements vscode.CodeLensProvider {
           lenses.push(
             new vscode.CodeLens(range, {
               title: `$(check) ${summary}`,
-              command: "duckdb.peekResults",
+              command: "f4dataprqt.peekResults",
               arguments: [
                 document.uri,
                 stmt.startOffset,

@@ -42,10 +42,10 @@ suite("DuckDB Extension Smoke Tests", function () {
     );
 
     const expected = [
-      "duckdb.executeQuery",
-      "duckdb.runStatement",
-      "duckdb.runStatementAtCursor",
-      "duckdb.peekResults",
+      "f4dataprqt.executeQuery",
+      "f4dataprqt.runStatement",
+      "f4dataprqt.runStatementAtCursor",
+      "f4dataprqt.peekResults",
     ];
 
     for (const cmd of expected) {
@@ -60,12 +60,12 @@ suite("DuckDB Extension Smoke Tests", function () {
     const commands = await vscode.commands.getCommands(true);
 
     const expected = [
-      "duckdb.selectDatabase",
-      "duckdb.explorer.refresh",
-      "duckdb.explorer.attachDatabase",
-      "duckdb.explorer.detachDatabase",
-      "duckdb.explorer.selectTop100",
-      "duckdb.explorer.describe",
+      "f4dataprqt.selectDatabase",
+      "f4dataprqt.explorer.refresh",
+      "f4dataprqt.explorer.attachDatabase",
+      "f4dataprqt.explorer.detachDatabase",
+      "f4dataprqt.explorer.selectTop100",
+      "f4dataprqt.explorer.describe",
     ];
 
     for (const cmd of expected) {
@@ -80,10 +80,10 @@ suite("DuckDB Extension Smoke Tests", function () {
     const commands = await vscode.commands.getCommands(true);
 
     const expected = [
-      "duckdb.manageExtensions",
-      "duckdb.extensions.refresh",
-      "duckdb.extensions.add",
-      "duckdb.extensions.load",
+      "f4dataprqt.manageExtensions",
+      "f4dataprqt.extensions.refresh",
+      "f4dataprqt.extensions.add",
+      "f4dataprqt.extensions.load",
     ];
 
     for (const cmd of expected) {
@@ -98,10 +98,10 @@ suite("DuckDB Extension Smoke Tests", function () {
     const commands = await vscode.commands.getCommands(true);
 
     const expected = [
-      "duckdb.history.refresh",
-      "duckdb.history.search",
-      "duckdb.history.runAgain",
-      "duckdb.history.clearAll",
+      "f4dataprqt.history.refresh",
+      "f4dataprqt.history.search",
+      "f4dataprqt.history.runAgain",
+      "f4dataprqt.history.clearAll",
     ];
 
     for (const cmd of expected) {
@@ -116,7 +116,7 @@ suite("DuckDB Extension Smoke Tests", function () {
 
   test("tree views are contributed", function () {
     const pkg = extension.packageJSON;
-    const views = pkg.contributes?.views?.["duckdb-explorer"];
+    const views = pkg.contributes?.views?.["f4dataprqt-explorer"];
     assert.ok(
       Array.isArray(views),
       "DuckDB explorer views should be contributed"
@@ -124,11 +124,11 @@ suite("DuckDB Extension Smoke Tests", function () {
 
     const ids = views.map((v: { id: string }) => v.id);
     assert.ok(
-      ids.includes("duckdb.databaseExplorer"),
+      ids.includes("f4dataprqt.databaseExplorer"),
       "Database explorer view"
     );
-    assert.ok(ids.includes("duckdb.queryHistory"), "Query history view");
-    assert.ok(ids.includes("duckdb.extensions"), "Extensions view");
+    assert.ok(ids.includes("f4dataprqt.queryHistory"), "Query history view");
+    assert.ok(ids.includes("f4dataprqt.extensions"), "Extensions view");
   });
 
   // --- Query Execution ---
@@ -146,7 +146,7 @@ suite("DuckDB Extension Smoke Tests", function () {
     // In a headless test environment the webview may not fully render,
     // but the command should not throw due to a DuckDB or binding error.
     try {
-      await vscode.commands.executeCommand("duckdb.executeQuery");
+      await vscode.commands.executeCommand("f4dataprqt.executeQuery");
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : String(err);
       // Fail on DuckDB / binding errors — these indicate a real problem.

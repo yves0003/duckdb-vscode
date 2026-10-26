@@ -42,7 +42,7 @@ export class HistoryService {
   async initialize(
     createConnection: (dbPath: string) => Promise<{ query: QueryFn; run: RunFn }>
   ): Promise<void> {
-    const config = vscode.workspace.getConfiguration('duckdb');
+    const config = vscode.workspace.getConfiguration('f4dataprqt');
     const persistEnabled = config.get<boolean>('history.persist', false);
 
     if (persistEnabled) {
@@ -73,7 +73,7 @@ export class HistoryService {
       }
     }
 
-    this.dbPath = path.join(vscodeDir, 'duckdb-history.db');
+    this.dbPath = path.join(vscodeDir, 'f4dataprqt-history.db');
 
     try {
       this.persistDb = await createConnection(this.dbPath);
@@ -218,7 +218,7 @@ export class HistoryService {
    * Remove old entries beyond max limit
    */
   private async pruneOldEntries(): Promise<void> {
-    const config = vscode.workspace.getConfiguration('duckdb');
+    const config = vscode.workspace.getConfiguration('f4dataprqt');
     const maxEntries = config.get<number>('history.maxEntries', 1000);
 
     if (this.entries.length > maxEntries) {

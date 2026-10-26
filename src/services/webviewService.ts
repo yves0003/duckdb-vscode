@@ -317,7 +317,7 @@ function tryReuseExistingPanel(
  * Get the configured ViewColumn for results panels
  */
 function getResultsViewColumn(): vscode.ViewColumn {
-  const config = vscode.workspace.getConfiguration("duckdb");
+  const config = vscode.workspace.getConfiguration("f4dataprqt");
   const location = config.get<string>("resultsLocation", "beside");
   return location === "active"
     ? vscode.ViewColumn.Active
@@ -461,7 +461,7 @@ function setupMessageHandler(
           break;
 
         case "goToSource":
-          await vscode.commands.executeCommand("duckdb.results.goToSource");
+          await vscode.commands.executeCommand("f4dataprqt.results.goToSource");
           break;
       }
     },

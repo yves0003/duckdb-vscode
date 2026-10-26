@@ -15,7 +15,7 @@ import {
  * Read DuckDB formatting configuration from workspace settings
  */
 function getFormattingConfig(options: vscode.FormattingOptions) {
-  const config = vscode.workspace.getConfiguration("duckdb.format");
+  const config = vscode.workspace.getConfiguration("f4dataprqt.format");
 
   return {
     language: "duckdb" as SqlLanguage,
