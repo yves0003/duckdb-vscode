@@ -2,7 +2,7 @@
   "name": "f4dataparq",
   "displayName": "f4data parquet",
   "description": "Open, explore and query large Parquet, CSV, JSON and Excel files in VS Code — schema, column statistics and SQL, powered by DuckDB",
-  "version": "0.0.33",
+  "version": "0.0.34",
   "publisher": "yves0003",
   "icon": "resources/icon.png",
   "repository": {

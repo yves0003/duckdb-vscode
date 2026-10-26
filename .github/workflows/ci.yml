@@ -82,13 +82,13 @@ jobs:
         run: npm ci
 
       - name: Package extension for ${{ matrix.target }}
-        run: npx @vscode/vsce package --target ${{ matrix.target }} --out duckdb-${{ matrix.target }}.vsix
+        run: npx @vscode/vsce package --target ${{ matrix.target }} --out f4dataparq-${{ matrix.target }}.vsix
 
       # vsce does not check that the bundled binding matches --target. Check
       # the VSIX ships only this target's binding, then load it from the
       # extracted package and run a query.
       - name: Verify packaged native binding
-        run: node scripts/verify-native-binding.mjs --target ${{ matrix.target }} --vsix duckdb-${{ matrix.target }}.vsix
+        run: node scripts/verify-native-binding.mjs --target ${{ matrix.target }} --vsix f4dataparq-${{ matrix.target }}.vsix
 
       - name: Upload VSIX artifact
         uses: actions/upload-artifact@v7
